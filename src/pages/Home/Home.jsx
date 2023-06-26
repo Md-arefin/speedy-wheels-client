@@ -1,6 +1,7 @@
 import React from 'react';
 import Banner from './Banner';
 import BookCar from './BookCar';
+import CarModel from './CarModel';
 import Trip from './Trip';
 
 
@@ -13,7 +14,18 @@ const Home = () => {
                 <BookCar ></BookCar>
             </div>
             {/* Trip */}
-            <Trip></Trip>
+            <div className='my-16'>
+                <Trip></Trip>
+            </div>
+            {/* car model */}
+            <div className='my-16'>
+                <CarModel />
+            </div>
+            {/* banner-02 */}
+            <div className='my-16 bg-black py-10 text-white text-center space-y-5'>
+                <h1 className='text-4xl font-bold'>Save big with our cheap car rental!</h1>
+                <p>Top Airports. Local Suppliers. <span className='text-red-500'>24/7</span> Support.</p>
+            </div>
         </div>
 
     );

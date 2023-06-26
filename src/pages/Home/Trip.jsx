@@ -11,7 +11,7 @@ const Trip = () => {
                 <h1 className='text-5xl font-bold'>Quick & easy car rental</h1>
                 <div className="divider mx-auto w-[40%]"></div>
             </div>
-            <div className='text-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
+            <div className='text-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 my-16'>
                 <div className='flex flex-col mx-auto'>
                     <div className=' mx-auto my-5'>
                         <BsFillCarFrontFill className='text-3xl text-red-700' />

@@ -10,10 +10,6 @@ const Navbar = () => {
         </li>
 
         <li className='text-lg font-bold'>
-            <Link>Testimonials</Link>
-        </li>
-
-        <li className='text-lg font-bold'>
             <Link>Our Teams</Link>
         </li>
 
