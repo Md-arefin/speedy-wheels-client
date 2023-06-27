@@ -9,7 +9,6 @@ const Trip = () => {
             <div className='text-center'>
                 <p className='text-xl my-3 font-bold'>Plan your trip now</p>
                 <h1 className='text-5xl font-bold'>Quick & easy car rental</h1>
-                <div className="divider mx-auto w-[40%]"></div>
             </div>
             <div className='text-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 my-16'>
                 <div className='flex flex-col mx-auto'>

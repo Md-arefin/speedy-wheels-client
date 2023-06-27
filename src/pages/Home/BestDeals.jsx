@@ -5,12 +5,12 @@ import { RiHandCoinLine } from 'react-icons/ri';
 
 const BestDeals = () => {
     return (
-        <div>
+        <div >
             <div >
                 <img className='mx-auto w-[40%]' src="https://i.ibb.co/5hSvW6m/pexels-neil-kelly-712614-removebg-preview.png" alt="" />
             </div>
             {/*  */}
-            <div className='grid grid-cols-1 lg:grid-cols-2 my-5 gap-10 px-10'>
+            <div className='grid grid-cols-1 lg:grid-cols-2 my-5 gap-10 px-10 ml-[200px]'>
                 <div className='space-y-5 mx-auto w-[75%]'>
                     <p className='text-lg font-bold'>Why Choose Us</p>
                     <h1 className='text-5xl font-bold'>
@@ -20,7 +20,7 @@ const BestDeals = () => {
                     <button className='btn bg-red-600 text-white px-5 text-lg font-bold'>Find Details  <MdKeyboardArrowRight className='text-2xl' /></button>
                 </div>
 
-                <div className='space-y-5 ml-[150px]'>
+                <div className='space-y-5'>
                     <div className='flex items-center gap-5 w-[55%]'>
                         <div>
                             <BsCarFront className='font-bold text-5xl ' />

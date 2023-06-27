@@ -3,6 +3,7 @@ import Banner from './Banner';
 import BestDeals from './BestDeals';
 import BookCar from './BookCar';
 import CarModel from './CarModel';
+import FAQ from './FAQ';
 import Testimonial from './Testimonial';
 import Trip from './Trip';
 
@@ -36,6 +37,8 @@ const Home = () => {
             <div className='my-24'>
                <Testimonial></Testimonial>
             </div>
+            {/* FAQ */}
+            <FAQ></FAQ>
         </div>
 
     );
