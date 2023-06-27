@@ -23,11 +23,13 @@ const BookCar = () => {
                         <h1 className='flex gap-5 font-bold text-xl'><BsFillCarFrontFill className='text-3xl text-red-700' /> Select your car</h1>
                         <details className="dropdown ml-10 mb-20">
                             <summary className="m-1 btn bg-rose-700 text-white hover:text-black">Select your car</summary>
-                            <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
-                                <li className='btn'>1</li>
-                                <li className='btn my-2'>2</li>
-                                <li className='btn'>3</li>
-                                <li className='btn my-2'>4</li>
+                            <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-[250px]">
+                                <li className='btn'>Mercedes-Benz S-Class</li>
+                                <li className='btn my-2'>BMW Z4</li>
+                                <li className='btn my-2'>Mercedes-Benz E-Class</li>
+                                <li className='btn'>Bentley Continental GT</li>
+                                <li className='btn  my-2'>Mercedes-Benz GLE Coupe</li>
+                                <li className='btn'>4Mini Cooper Countryman</li>
                             </ul>
                         </details>
                     </div>
@@ -58,7 +60,7 @@ const BookCar = () => {
                     <div>
                         <h1 className='flex gap-5 font-bold text-xl mb-5'><MdOutlineCalendarMonth className='text-3xl text-red-700' /> Drop-of Date</h1>
                         <DatePicker
-                        className='border-2 rounded mb-20 ml-10 p-2 md:ml-12'
+                            className='border-2 rounded mb-20 ml-10 p-2 md:ml-12'
                             selected={endDate}
                             dateFormat="dd/MM/yyyy"
                             placeholderText="drop-of date!"
@@ -80,7 +82,7 @@ const BookCar = () => {
                             </ul>
                         </details>
                     </div>
-                    <input className='btn ml-10 md:ml-[48px] md:mt-10 bg-rose-900 text-white hover:text-black' type='submit' value='Book now'/>
+                    <input className='btn ml-10 md:ml-[48px] md:mt-10 bg-rose-900 text-white hover:text-black' type='submit' value='Book now' />
                 </div>
             </form>
         </div>
