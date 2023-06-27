@@ -12,7 +12,7 @@ const Banner = () => {
                     <img src={bg} className='w-full lg:w-[50%] opacity-50 absolute right-0' alt="" />
                 </div>
                 <div className="flex">
-                    <div className='absolute top-[320px] md:left-[270px] md:mt-[200px]'>
+                    <div className='absolute top-[320px] md:top-[200px] md:left-[270px]'>
                         <div className='font-bold space-y-5 mb-10'>
                             <p className='md:text-lg'>Plan your trip now</p>
                             <h1 className='text-5xl md:text-7xl'>
@@ -20,7 +20,7 @@ const Banner = () => {
                             </h1>
                             <p className='text-neutral-400 text-sm'>Rent the car of your dreams. Unbeatable prices, unlimited miles, <br className='hidden md:block'/> flexible pick-up options and much more.</p>
                         </div>
-                        <div className="flex flex-col gap-10">
+                        <div className="flex flex-col md:flex-row gap-10">
                             <button className='btn bg-red-600 text-white px-5 text-lg font-bold'>Book ride <BsFillPatchCheckFill className='text-xl' /></button>
 
                             <button className='btn bg-black text-white px-5 text-lg font-bold'>Learn More <MdKeyboardArrowRight className='text-2xl' /> </button>

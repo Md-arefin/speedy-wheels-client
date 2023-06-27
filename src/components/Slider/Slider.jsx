@@ -20,7 +20,7 @@ const Slider = () => {
                             <BiSolidQuoteSingleRight className='text-center text-5xl text-red-700'></BiSolidQuoteSingleRight>
                         </div>
                         <div className='text-center my-5'>
-                            <p className=' font-bold text-xl '>
+                            <p className=' font-bold md:text-xl '>
                                 "We rented a car from this website and had an amazing experience! The booking was easy and the rental rates were very affordable"
                             </p>
                         </div>
@@ -46,7 +46,7 @@ const Slider = () => {
                             <BiSolidQuoteSingleRight className='text-center text-5xl text-red-700'></BiSolidQuoteSingleRight>
                         </div>
                         <div className='text-center my-5'>
-                            <p className=' font-bold text-xl '>
+                            <p className=' font-bold md:text-xl '>
                                 "The car was in great condition and made our trip even better. Highly recommend for this car rental website"
                             </p>
                         </div>
@@ -72,7 +72,7 @@ const Slider = () => {
                             <BiSolidQuoteSingleRight className='text-center text-5xl text-red-700'></BiSolidQuoteSingleRight>
                         </div>
                         <div className='text-center my-5'>
-                            <p className=' font-bold text-xl '>
+                            <p className=' font-bold md:text-xl '>
                                 "We rented a car from this website and had an amazing experience! The booking was easy and the rental rates were very affordable"
                             </p>
                         </div>
