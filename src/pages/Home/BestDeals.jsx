@@ -1,5 +1,4 @@
 import React from 'react';
-import car4 from '../../assets/cars/car-5.png'
 import { MdKeyboardArrowRight } from 'react-icons/md';
 import { BsCoin, BsCarFront } from 'react-icons/bs';
 import { RiHandCoinLine } from 'react-icons/ri';
@@ -8,7 +7,7 @@ const BestDeals = () => {
     return (
         <div>
             <div >
-                <img className='mx-auto w-[40%]' src={car4} alt="" />
+                <img className='mx-auto w-[40%]' src="https://i.ibb.co/5hSvW6m/pexels-neil-kelly-712614-removebg-preview.png" alt="" />
             </div>
             {/*  */}
             <div className='grid grid-cols-1 lg:grid-cols-2 my-5 gap-10 px-10'>
