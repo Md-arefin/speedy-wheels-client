@@ -16,8 +16,8 @@ const Slider = () => {
                 <div className='flex flex-col items-center my-10'>
                     <div className='flex flex-col items-center justify-center'>
                         <div className='mt-16 flex justify-center items-center'>
-                            <BiSolidQuoteSingleRight className='text-center text-5xl text-red-700'></BiSolidQuoteSingleRight>
-                            <BiSolidQuoteSingleRight className='text-center text-5xl text-red-700'></BiSolidQuoteSingleRight>
+                            <BiSolidQuoteSingleRight className='text-center text-5xl text-rose-800'></BiSolidQuoteSingleRight>
+                            <BiSolidQuoteSingleRight className='text-center text-5xl text-rose-800'></BiSolidQuoteSingleRight>
                         </div>
                         <div className='text-center my-5'>
                             <p className=' font-bold md:text-xl '>
@@ -42,8 +42,8 @@ const Slider = () => {
                 <div className='flex flex-col items-center my-10'>
                     <div className='flex flex-col items-center justify-center'>
                         <div className='mt-16 flex justify-center items-center'>
-                            <BiSolidQuoteSingleRight className='text-center text-5xl text-red-700'></BiSolidQuoteSingleRight>
-                            <BiSolidQuoteSingleRight className='text-center text-5xl text-red-700'></BiSolidQuoteSingleRight>
+                            <BiSolidQuoteSingleRight className='text-center text-5xl text-rose-800'></BiSolidQuoteSingleRight>
+                            <BiSolidQuoteSingleRight className='text-center text-5xl text-rose-800'></BiSolidQuoteSingleRight>
                         </div>
                         <div className='text-center my-5'>
                             <p className=' font-bold md:text-xl '>
@@ -68,8 +68,8 @@ const Slider = () => {
                 <div className='flex flex-col items-center my-10'>
                     <div className='flex flex-col items-center justify-center'>
                         <div className='mt-16 flex justify-center items-center'>
-                            <BiSolidQuoteSingleRight className='text-center text-5xl text-red-700'></BiSolidQuoteSingleRight>
-                            <BiSolidQuoteSingleRight className='text-center text-5xl text-red-700'></BiSolidQuoteSingleRight>
+                            <BiSolidQuoteSingleRight className='text-center text-5xl text-rose-800'></BiSolidQuoteSingleRight>
+                            <BiSolidQuoteSingleRight className='text-center text-5xl text-rose-800'></BiSolidQuoteSingleRight>
                         </div>
                         <div className='text-center my-5'>
                             <p className=' font-bold md:text-xl '>

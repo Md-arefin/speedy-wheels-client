@@ -4,20 +4,20 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
     const navItems = 
     <>
-        <li className='text-lg font-bold'>
-            <Link>Home</Link>
+        <li className='text-lg font-bold hover:bg-rose-800  rounded'>
+            <Link className='hover:text-white'>Home</Link>
         </li>
 
-        <li className='text-lg font-bold'>
-            <Link>Our Teams</Link>
+        <li className='text-lg font-bold hover:bg-rose-800  rounded'>
+            <Link className='hover:text-white'>Our Teams</Link>
         </li>
 
-        <li className='text-lg font-bold'>
-            <Link>About</Link>
+        <li className='text-lg font-bold hover:bg-rose-800  rounded'>
+            <Link className='hover:text-white'>About</Link>
         </li>
 
-        <li className='text-lg font-bold'>
-            <Link>Contact</Link>
+        <li className='text-lg font-bold hover:bg-rose-800 rounded'>
+            <Link className='hover:text-white'>Contact</Link>
         </li>
     </>
     return (
@@ -31,7 +31,7 @@ const Navbar = () => {
                         {navItems}
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl">SpeedyWheels</a>
+                <a className="btn btn-ghost normal-case text-xl hover:bg-rose-800 hover:text-white">SpeedyWheels</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -39,7 +39,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Login</a>
+                <a className="btn bg-rose-800 text-white font-bold hover:text-black">Login</a>
             </div>
         </div>
     );

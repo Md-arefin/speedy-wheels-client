@@ -10,7 +10,7 @@ const BestDeals = () => {
                 <img className='mx-auto md:w-[40%]' src="https://i.ibb.co/5hSvW6m/pexels-neil-kelly-712614-removebg-preview.png" alt="" />
             </div>
             {/*  */}
-            <div className='grid grid-cols-1 lg:grid-cols-2 my-5 gap-10 px-10 lg:ml-[200px]'>
+            <div className='grid grid-cols-1 lg:grid-cols-2 my-5 gap-10 px-5 md:px-10 lg:ml-[200px]'>
                 <div className='space-y-5 mx-auto md:w-[75%] mb-16 md:mb-0'>
                     <p className='text-lg font-bold'>Why Choose Us</p>
                     <h1 className='text-4xl lg:text-5xl font-bold'>

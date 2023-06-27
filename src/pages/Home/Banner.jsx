@@ -21,9 +21,9 @@ const Banner = () => {
                             <p className='text-neutral-400 text-sm'>Rent the car of your dreams. Unbeatable prices, unlimited miles, <br className='hidden md:block'/> flexible pick-up options and much more.</p>
                         </div>
                         <div className="flex flex-col md:flex-row gap-10">
-                            <button className='btn bg-red-600 text-white px-5 text-lg font-bold'>Book ride <BsFillPatchCheckFill className='text-xl' /></button>
+                            <button className='btn bg-red-600 text-white px-5 text-lg font-bold hover:text-black'>Book ride <BsFillPatchCheckFill className='text-xl' /></button>
 
-                            <button className='btn bg-black text-white px-5 text-lg font-bold'>Learn More <MdKeyboardArrowRight className='text-2xl' /> </button>
+                            <button className='btn bg-black text-white px-5 text-lg font-bold hover:text-black'>Learn More <MdKeyboardArrowRight className='text-2xl' /> </button>
                         </div>
                     </div>
 

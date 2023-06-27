@@ -16,7 +16,7 @@ const FAQ = () => {
                 <div className="join join-vertical w-full md:w-[40%]  mx-auto">
                     <div className="collapse collapse-arrow join-item border border-base-300">
                         <input type="radio" name="my-accordion-4" checked="checked" />
-                        <div className="collapse-title text-xl font-bold text-white bg-orange-500">
+                        <div className="collapse-title text-xl font-bold text-white  bg-rose-900">
                             1.What is special about comparing rental car deals?
                         </div>
                         <div className="collapse-content">
@@ -25,7 +25,7 @@ const FAQ = () => {
                     </div>
                     <div className="collapse collapse-arrow join-item border border-base-300">
                         <input type="radio" name="my-accordion-4" />
-                        <div className="collapse-title text-xl font-bold text-white bg-orange-500">
+                        <div className="collapse-title text-xl font-bold text-white bg-rose-900">
                             2.How do I find the car rental deals?
                         </div>
                         <div className="collapse-content">
@@ -34,7 +34,7 @@ const FAQ = () => {
                     </div>
                     <div className="collapse collapse-arrow join-item border border-base-300">
                         <input type="radio" name="my-accordion-4" />
-                        <div className="collapse-title text-xl font-bold text-white bg-orange-500">
+                        <div className="collapse-title text-xl font-bold text-white  bg-rose-900">
                             3.How do I find such low rental car prices?
                         </div>
                         <div className="collapse-content">
