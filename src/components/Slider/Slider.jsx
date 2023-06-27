@@ -13,9 +13,10 @@ const Slider = () => {
             navigation={true} modules={[Navigation]}
         >
             <SwiperSlide>
-                <div className='flex flex-col items-center my-16'>
+                <div className='flex flex-col items-center my-10'>
                     <div className='flex flex-col items-center justify-center'>
-                        <div className='mt-16'>
+                        <div className='mt-16 flex justify-center items-center'>
+                            <BiSolidQuoteSingleRight className='text-center text-5xl text-red-700'></BiSolidQuoteSingleRight>
                             <BiSolidQuoteSingleRight className='text-center text-5xl text-red-700'></BiSolidQuoteSingleRight>
                         </div>
                         <div className='text-center my-5'>
@@ -24,23 +25,24 @@ const Slider = () => {
                             </p>
                         </div>
                     </div>
-                    <div className='flex mb-10'>
+                    <div className='flex ml-[120px] items-center gap-5'>
                         <div className="avatar">
                             <div className="w-16 rounded-full">
                                 <img src="https://i.ibb.co/YbMyS7f/images-1.jpg" />
                             </div>
                         </div>
-                        <div className='w-1/2 mx-auto space-y-2'>
-                            <h3 className='text-3xl font-bold w-[300px]'>Son Goku</h3>
+                        <div className=' mx-auto space-y-2'>
+                            <h3 className='text-2xl md:text-3xl font-bold w-[300px]'>Son Goku</h3>
                             <p className='text-neutral-500 font-bold text-lg '>Dhaka</p>
                         </div>
                     </div>
                 </div>
             </SwiperSlide>
             <SwiperSlide>
-            <div className='flex flex-col items-center my-16'>
+                <div className='flex flex-col items-center my-10'>
                     <div className='flex flex-col items-center justify-center'>
-                        <div className='mt-16'>
+                        <div className='mt-16 flex justify-center items-center'>
+                            <BiSolidQuoteSingleRight className='text-center text-5xl text-red-700'></BiSolidQuoteSingleRight>
                             <BiSolidQuoteSingleRight className='text-center text-5xl text-red-700'></BiSolidQuoteSingleRight>
                         </div>
                         <div className='text-center my-5'>
@@ -49,23 +51,24 @@ const Slider = () => {
                             </p>
                         </div>
                     </div>
-                    <div className='flex mb-10'>
+                    <div className='flex ml-[120px] items-center gap-5'>
                         <div className="avatar">
                             <div className="w-16 rounded-full">
                                 <img src="https://i.ibb.co/XtkrNBq/download.jpg" />
                             </div>
                         </div>
-                        <div className='w-1/2 mx-auto space-y-2'>
-                            <h3 className='text-3xl font-bold w-[300px]'>Minato Namikaje</h3>
+                        <div className=' mx-auto space-y-2'>
+                            <h3 className='text-2xl md:text-3xl font-bold w-[300px]'>Minato Namikaje</h3>
                             <p className='text-neutral-500 font-bold text-lg '>Dhaka</p>
                         </div>
                     </div>
                 </div>
             </SwiperSlide>
             <SwiperSlide>
-            <div className='flex flex-col items-center my-16'>
+                <div className='flex flex-col items-center my-10'>
                     <div className='flex flex-col items-center justify-center'>
-                        <div className='mt-16'>
+                        <div className='mt-16 flex justify-center items-center'>
+                            <BiSolidQuoteSingleRight className='text-center text-5xl text-red-700'></BiSolidQuoteSingleRight>
                             <BiSolidQuoteSingleRight className='text-center text-5xl text-red-700'></BiSolidQuoteSingleRight>
                         </div>
                         <div className='text-center my-5'>
@@ -74,20 +77,20 @@ const Slider = () => {
                             </p>
                         </div>
                     </div>
-                    <div className='flex mb-10'>
+                    <div className='flex gap-5 ml-[120px] items-center'>
                         <div className="avatar">
                             <div className="w-16 rounded-full">
                                 <img src="https://i.ibb.co/nMCh6Ps/images.jpg" />
                             </div>
                         </div>
-                        <div className='w-1/2 mx-auto space-y-2'>
-                            <h3 className='text-3xl font-bold w-[300px]'>Monkey D Luffy</h3>
+                        <div className=' mx-auto space-y-2'>
+                            <h3 className='text-2xl md:text-3xl font-bold w-[300px]'>Monkey D Luffy</h3>
                             <p className='text-neutral-500 font-bold text-lg '>Dhaka</p>
                         </div>
                     </div>
                 </div>
             </SwiperSlide>
-         
+
         </Swiper>
 
     );

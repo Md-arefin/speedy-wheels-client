@@ -8,30 +8,30 @@ const Banner = () => {
     return (
         <div>
             <section className='relative'>
-            <div >
-                <img src={bg} className='w-[50%] md:w-[60%] lg:w-[50%] opacity-50 absolute right-0' alt="" />
-            </div>
-            <div className="flex">
-                <div className='absolute left-[270px] mt-[200px]'>
-                    <div className='font-bold space-y-5 mb-10'>
-                        <p className='text-lg'>Plan your trip now</p>
-                        <h1 className='text-7xl'>
-                            Save <span className='text-red-600'>big</span>  with our <br /> car rental
-                        </h1>
-                        <p className='text-neutral-400 text-sm'>Rent the car of your dreams. Unbeatable prices, unlimited miles, <br /> flexible pick-up options and much more.</p>
-                    </div>
-                    <div className="flex gap-10">
-                        <button className='btn bg-red-600 text-white px-5 text-lg font-bold'>Book ride <BsFillPatchCheckFill className='text-xl' /></button>
+                <div >
+                    <img src={bg} className='w-full lg:w-[50%] opacity-50 absolute right-0' alt="" />
+                </div>
+                <div className="flex">
+                    <div className='absolute top-[320px] md:left-[270px] md:mt-[200px]'>
+                        <div className='font-bold space-y-5 mb-10'>
+                            <p className='md:text-lg'>Plan your trip now</p>
+                            <h1 className='text-5xl md:text-7xl'>
+                                Save <span className='text-red-600'>big</span>  with our <br className='hidden md:block'/> car rental
+                            </h1>
+                            <p className='text-neutral-400 text-sm'>Rent the car of your dreams. Unbeatable prices, unlimited miles, <br className='hidden md:block'/> flexible pick-up options and much more.</p>
+                        </div>
+                        <div className="flex flex-col gap-10">
+                            <button className='btn bg-red-600 text-white px-5 text-lg font-bold'>Book ride <BsFillPatchCheckFill className='text-xl' /></button>
 
-                        <button className='btn bg-black text-white px-5 text-lg font-bold'>Learn More <MdKeyboardArrowRight className='text-2xl' /> </button>
+                            <button className='btn bg-black text-white px-5 text-lg font-bold'>Learn More <MdKeyboardArrowRight className='text-2xl' /> </button>
+                        </div>
+                    </div>
+
+                    <div className='absolute top-[35px] md:right-[150px] md:top-[150px]'>
+                        <img src={red} alt="" />
                     </div>
                 </div>
-
-                <div className='absolute right-[150px] top-[150px]'>
-                    <img src={red} alt="" />
-                </div>
-            </div>
-        </section>
+            </section>
         </div>
     );
 };
