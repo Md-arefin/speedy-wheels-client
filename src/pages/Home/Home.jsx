@@ -4,6 +4,7 @@ import BestDeals from './BestDeals';
 import BookCar from './BookCar';
 import CarModel from './CarModel';
 import FAQ from './FAQ';
+import Parallax from './Parallax';
 import Testimonial from './Testimonial';
 import Trip from './Trip';
 
@@ -32,6 +33,10 @@ const Home = () => {
             {/* best deals */}
             <div className='my-24'>
                 <BestDeals></BestDeals>
+            </div>
+            {/* Parallax */}
+            <div className='my-24'>
+               <Parallax/>
             </div>
             {/* testimonials */}
             <div className='my-24'>
