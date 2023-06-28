@@ -1,0 +1,62 @@
+[
+    {
+      "_id": "1",
+      "picture": "https://i.ibb.co/SB4s5Zn/pexels-mike-bird-3729464-removebg-preview.png",
+      "rent": "175.99",
+      "model": "Mercedes-Benz S-Class",
+      "year": 2018,
+      "fuel": "Diesel, Petrol",
+      "doors": "2",
+      "transmission": "Automatic (TC)"
+    },
+    {
+      "_id": "2",
+      "picture": "https://i.ibb.co/mGPDw6T/pexels-mike-bird-193021-removebg-preview.png",
+      "rent": "155.99",
+      "model": "Mercedes-Benz E-Class",
+      "year": 2020,
+      "fuel": "Petrol, Diesel",
+      "doors": "2",
+      "transmission": "Automatic (TC)"
+    },
+    {
+      "_id": "3",
+      "picture": "https://i.ibb.co/DGKyn7g/pexels-pixabay-164654-removebg-preview.png",
+      "rent": "155.99",
+      "model": "Mercedes-Benz GLE Coupe",
+      "year": 2021,
+      "fuel": "Petrol",
+      "doors": "4",
+      "transmission": "Automatic"
+    },
+    {
+      "_id": "4",
+      "picture": "https://i.ibb.co/K5qJKn0/stefan-rodriguez-2-Aovfz-YV3rc-unsplash-1-removebg-preview.png",
+      "rent": "125.99",
+      "model": "Chevrolet Camaro",
+      "year": 2022,
+      "fuel": "Petrol",
+      "doors": "2",
+      "transmission": "6-speed TR-3160 manual"
+    },
+    {
+      "_id": "5",
+      "picture": "https://i.ibb.co/D7MBNwy/pexels-mike-bird-892522-removebg-preview.png",
+      "rent": "145.99",
+      "model": "BMW Z4",
+      "year": 2019,
+      "fuel": "Petrol",
+      "doors": "2",
+      "transmission": "8 Speed Automatic transmission"
+    },
+    {
+      "_id": "6",
+      "picture": "https://i.ibb.co/nQVQJkJ/bently1.png",
+      "rent": "135.99",
+      "model": "Bentley Continental GT",
+      "year": 2022,
+      "fuel": "Gasoline",
+      "doors": "4",
+      "transmission": "8 Speed Automatic transmission"
+    }
+  ]

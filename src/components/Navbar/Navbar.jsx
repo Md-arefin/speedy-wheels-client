@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../../assets/logo.png';
 
 const Navbar = () => {
     const navItems = 
@@ -21,8 +22,8 @@ const Navbar = () => {
         </li>
     </>
     return (
-        <div className="navbar bg-transparent fixed z-10 w-[91%] ">
-            <div className="navbar-start">
+        <div className="max-w-screen-2xl navbar bg-transparent fixed z-10 w-[91%] ">
+            <div className="navbar-start  relative">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
@@ -31,7 +32,9 @@ const Navbar = () => {
                         {navItems}
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl hover:bg-rose-800 hover:text-white">SpeedyWheels</a>
+                <Link>
+                    <img className='w-[60%]  rounded' src={logo} alt="" />
+                </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">

@@ -1,11 +1,13 @@
 import React from 'react';
+import logo from '../../assets/logo.png'
 
 const Footer = () => {
     return (
         <>
-            <footer className="footer p-10 bg-neutral text-neutral-content">
+            <footer className="footer p-10 bg-black text-neutral-content">
                 <div>
-                    <p>ACME Industries Ltd.<br />Providing reliable tech since 1992</p>
+                    <img className='rounded' src={logo} alt="" />
+                    <p>SpeedyWheel Ltd.<br />Providing reliable tech since 2023</p>
                 </div>
                 <div>
                     <span className="footer-title">Social</span>
@@ -18,7 +20,7 @@ const Footer = () => {
             </footer>
             <div className="footer footer-center p-4 bg-base-300 text-base-content">
                 <div>
-                    <p>Copyright © 2023 - All right reserved by ACME Industries Ltd</p>
+                    <p>Copyright © 2023 - All right reserved by SpeedyWheel Ltd. Ltd</p>
                 </div>
             </div>
         </>

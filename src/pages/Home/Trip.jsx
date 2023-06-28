@@ -15,7 +15,7 @@ const Trip = () => {
                     <div className=' mx-auto my-5'>
                         <BsFillCarFrontFill className='text-5xl text-red-700' />
                     </div>
-                    <div className='md:w-1/2 mx-auto space-y-5'>
+                    <div className=' mx-auto space-y-5'>
                         <h3 className='text-3xl font-bold'>Select Car</h3>
                         <p className='text-neutral-500 text-sm '>We offers a big range of vehicles for all your driving needs. We have the perfect car to meet your needs</p>
                     </div>
@@ -24,7 +24,7 @@ const Trip = () => {
                     <div className=' mx-auto my-5'>
                         <RiCustomerService2Fill className='text-5xl text-red-700'/>
                     </div>
-                    <div className='md:w-1/2 mx-auto space-y-5'>
+                    <div className=' mx-auto space-y-5'>
                         <h3 className='text-3xl font-bold'>Contact Operator</h3>
                         <p className='text-neutral-500 text-sm '>We offers a big range of vehicles for all your driving needs. We have the perfect car to meet your needs</p>
                     </div>
@@ -33,7 +33,7 @@ const Trip = () => {
                     <div className=' mx-auto my-5'>
 <FaCarSide className='text-5xl text-red-700'></FaCarSide>
                     </div>
-                    <div className='md:w-1/2 mx-auto space-y-5'>
+                    <div className=' mx-auto space-y-5'>
                         <h3 className='text-3xl font-bold'>Let's Drive</h3>
                         <p className='text-neutral-500 text-sm '>We offers a big range of vehicles for all your driving needs. We have the perfect car to meet your needs</p>
                     </div>

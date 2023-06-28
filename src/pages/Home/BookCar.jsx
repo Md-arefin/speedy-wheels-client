@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BsFillCarFrontFill } from 'react-icons/bs';
+import { BsFillCarFrontFill, BsFillCartCheckFill } from 'react-icons/bs';
 import { MdEditLocationAlt } from 'react-icons/md';
 import { MdOutlineCalendarMonth, MdCalendarMonth } from 'react-icons/md';
 import DatePicker from "react-datepicker";
@@ -16,7 +16,7 @@ const BookCar = () => {
                 <h1 className='text-3xl font-bold '>Book Your Dream car</h1>
             </div>
             {/*  */}
-            <form className='md:mx-[350px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-20'>
+            <form className='lg:mx-20 grid grid-cols-1 md:grid-cols-3 mt-20'>
 
                 <div>
                     <div>
@@ -82,7 +82,10 @@ const BookCar = () => {
                             </ul>
                         </details>
                     </div>
-                    <input className='btn ml-10 md:ml-[48px] md:mt-10 bg-rose-900 text-white hover:text-black' type='submit' value='Book now' />
+                    <div className='flex btn ml-6 lg:w-[260px] text-lg md:ml-[48px] md:mt-10 bg-rose-900 text-white hover:text-black w-[280px]'>
+                        <BsFillCartCheckFill />
+                        <input type='submit' value='Book now' />
+                    </div>
                 </div>
             </form>
         </div>
