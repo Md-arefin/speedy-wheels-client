@@ -1,26 +1,36 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.png';
+import { AuthContext } from '../../Provider/AuthProvider';
 
 const Navbar = () => {
-    const navItems = 
-    <>
-        <li className='text-lg font-bold hover:bg-rose-800  rounded'>
-            <Link className='hover:text-white'>Home</Link>
-        </li>
+    const { user, logOut } = useContext(AuthContext);
+    const navItems =
+        <>
+            <li className='text-lg font-bold hover:bg-rose-800  rounded'>
+                <Link className='hover:text-white'>Home</Link>
+            </li>
 
-        <li className='text-lg font-bold hover:bg-rose-800  rounded'>
-            <Link className='hover:text-white'>Our Teams</Link>
-        </li>
+            <li className='text-lg font-bold hover:bg-rose-800  rounded'>
+                <Link className='hover:text-white'>Our Teams</Link>
+            </li>
 
-        <li className='text-lg font-bold hover:bg-rose-800  rounded'>
-            <Link className='hover:text-white'>About</Link>
-        </li>
+            <li className='text-lg font-bold hover:bg-rose-800  rounded'>
+                <Link className='hover:text-white'>About</Link>
+            </li>
 
-        <li className='text-lg font-bold hover:bg-rose-800 rounded'>
-            <Link className='hover:text-white'>Contact</Link>
-        </li>
-    </>
+            <li className='text-lg font-bold hover:bg-rose-800 rounded'>
+                <Link className='hover:text-white'>Contact</Link>
+            </li>
+        </>
+
+
+    const handleLogOut = () => {
+        logOut()
+            .then()
+            .catch(err => console.log(err))
+    }
+
     return (
         <div className="max-w-screen-2xl navbar bg-transparent fixed z-10 w-[91%] ">
             <div className="navbar-start  relative">
@@ -42,7 +52,19 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to='login' className="btn bg-rose-800 text-white font-bold hover:text-black">Login</Link>
+                {user ? <>
+
+                    <div className="avatar lg:mr-5">
+                        <div className="w-8 rounded">
+                            <img src={user?.photoURL} alt={user?.displayName} />
+                        </div>
+                    </div>
+
+                    <Link onClick={handleLogOut} className="btn bg-rose-800 text-white font-bold hover:text-black">Logout</Link>
+                </>
+                    :
+                    <Link to='login' className="btn bg-rose-800 text-white font-bold hover:text-black">Login</Link>
+                }
             </div>
         </div>
     );
