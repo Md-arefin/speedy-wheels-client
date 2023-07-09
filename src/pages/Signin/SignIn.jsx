@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from '../../Provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const SignIn = () => {
     const [error, setError] = useState('');
@@ -14,16 +15,56 @@ const SignIn = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
-    
-    const onSubmit = data =>{
+
+    const onSubmit = data => {
         setError('');
         console.log(data)
+        createUser(data.email, data.password)
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                updateUserProfile({
+                    displayName: data.name,
+                    photoURL: data.photo
+                })
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Sign up Successful',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                navigate('/')
+            })
+            .catch(error => {
+                console.log(error.message);
+                setError(error.message);
+            })
+    }
+
+    const handleGoogle = () =>{
+        googleSignIn()
+            .then(result =>{
+                const loggedUser =result.user;
+                console.log(loggedUser)
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Sign up Successful',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            })
+            .catch(error => {
+                console.log(error.message);
+                setError(error.message);
+            })
     }
 
     return (
         <div className='text-center'>
 
-        <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit(onSubmit)}>
 
                 <div className="hero min-h-screen">
 
@@ -51,7 +92,8 @@ const SignIn = () => {
                                         <label className="label">
                                             <span className="label-text text-white">Name</span>
                                         </label>
-                                        <input type="text" placeholder="Enter your Name..."
+                                        <input type="text"
+                                         placeholder="Enter your Name..."
                                             {...register("name", { required: true })}
                                             className="input input-bordered" />
                                         {errors.name && <span className='text-red-600 font-bold text-lg mt-2'>Name field is required</span>}
@@ -115,7 +157,7 @@ const SignIn = () => {
                                         <div className='h-[1px] bg-slate-400 w-[50px]'></div>
                                     </div>
 
-                                    <button onClick='' className="mx-auto my-5 btn bg-slate-300 hover:text-black border-b-4 border-0 border-black  text-lg font-semibold w-full"><FcGoogle className='text-xl' /> Sign Up With Google</button>
+                                    <button onClick={handleGoogle} className="mx-auto my-5 btn bg-slate-300 hover:text-black border-b-4 border-0 border-black  text-lg font-semibold w-full"><FcGoogle className='text-xl' /> Sign Up With Google</button>
                                 </div>
 
                             </div>
