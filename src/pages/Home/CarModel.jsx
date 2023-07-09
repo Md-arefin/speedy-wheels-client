@@ -5,7 +5,7 @@ const CarModel = () => {
     const [cars, setCars] = useState([]);
 
     useEffect(() => {
-        fetch('/public/cars.json')
+        fetch('/cars.json')
             .then(res => res.json())
             .then(data => {
                 // console.log(data)
