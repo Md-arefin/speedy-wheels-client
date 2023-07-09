@@ -57,6 +57,7 @@ const Login = () => {
                     showConfirmButton: false,
                     timer: 1500
                 })
+                navigate(from, {replace: true });
             })
             .catch( err => {
                 console.log(err.message)

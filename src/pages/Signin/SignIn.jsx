@@ -54,6 +54,7 @@ const SignIn = () => {
                     showConfirmButton: false,
                     timer: 1500
                 })
+                navigate(from, {replace: true });
             })
             .catch(error => {
                 console.log(error.message);
