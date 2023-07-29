@@ -1,10 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import { AuthContext } from '../../Provider/AuthProvider';
 
 const Navbar = () => {
+    const [isScrolled, setIsScrolled] = useState(false);
     const { user, logOut } = useContext(AuthContext);
+    
     const navItems =
         <>
             <li className='text-lg font-bold hover:bg-rose-800  rounded'>
@@ -12,11 +14,11 @@ const Navbar = () => {
             </li>
 
             <li className='text-lg font-bold hover:bg-rose-800  rounded'>
-                <Link className='hover:text-white'>Our Teams</Link>
+                <Link to="our-team" className='hover:text-white'>Our Teams</Link>
             </li>
 
             <li className='text-lg font-bold hover:bg-rose-800  rounded'>
-                <Link className='hover:text-white'>About</Link>
+                <Link to="about" className='hover:text-white'>About</Link>
             </li>
 
             <li className='text-lg font-bold hover:bg-rose-800 rounded'>
@@ -31,8 +33,24 @@ const Navbar = () => {
             .catch(err => console.log(err))
     }
 
+
+    
+
+    const handleScroll = () => {
+        setIsScrolled(window.screenY >= 20);
+    }
+
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll)
+        };
+    }, [])
+
     return (
-        <div className="max-w-screen-2xl navbar bg-transparent fixed z-10 w-[91%] ">
+        <div className={`max-w-screen-2xl navbar  fixed z-10 w-[91%] ${isScrolled ? 'bg-black text-white' : "bg-transparent"} `}>
             <div className="navbar-start  relative">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">

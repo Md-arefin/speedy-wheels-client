@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, {  useRef } from 'react';
 import { BiSolidContact } from 'react-icons/bi';
 import { BsSendFill } from 'react-icons/bs';
 import { Player, Controls } from '@lottiefiles/react-lottie-player';
@@ -32,6 +32,8 @@ const Contact = () => {
                 });
     };
 
+    
+
     return (
          <div className='my-16'>
                 <div className='flex items-center justify-center gap-5'>
@@ -39,7 +41,9 @@ const Contact = () => {
                     <h3 className='text-center text-4xl font-bold '>Contact Us
                     </h3>
                 </div>
-
+                    <p className='my-5 mx-10'>
+                    If you need any assistance, have questions, or require any support, don't hesitate to reach out to me! Whether it's about a project, a problem, or just a friendly chat, I'm here to help. Feel free to contact me through this platform, and I'll get back to you as soon as possible. Your feedback and inquiries are valuable to me, so don't hesitate to get in touch. Looking forward to connecting with you!
+                    </p>
                 <div>
                     <div className="hero flex flex-col md:flex-row my-10">
                         <div className='md:w-[50%] mx-5'>
