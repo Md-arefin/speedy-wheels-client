@@ -20,7 +20,7 @@ const Navbar = () => {
             </li>
 
             <li className='text-lg font-bold hover:bg-rose-800 rounded'>
-                <Link className='hover:text-white'>Contact</Link>
+                <Link to="contact" className='hover:text-white'>Contact</Link>
             </li>
         </>
 
