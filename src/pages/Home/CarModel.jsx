@@ -5,10 +5,10 @@ const CarModel = () => {
     const [cars, setCars] = useState([]);
 
     useEffect(() => {
-        fetch('/cars.json')
+        fetch('http://localhost:5000/cars')
             .then(res => res.json())
             .then(data => {
-                // console.log(data)
+                console.log(data)
                 setCars(data)
             })
     }, [])
