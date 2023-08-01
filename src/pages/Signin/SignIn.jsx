@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Controls, Player } from '@lottiefiles/react-lottie-player';
 import { useForm } from "react-hook-form";
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { json, Link, useLocation, useNavigate } from 'react-router-dom';
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
@@ -27,13 +27,33 @@ const SignIn = () => {
                     displayName: data.name,
                     photoURL: data.photo
                 })
-                Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: 'Sign up Successful',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
+                    .then(() => {
+                        const savedUser = {
+                            name: data.name,
+                            email: data.email
+                        }
+
+                        fetch('http://localhost:5000/users', {
+                            method: "POST",
+                            headers: {
+                                'content-type': "application/json"
+                            },
+                            body: JSON.stringify(savedUser)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId) {
+                                    reset()
+                                    Swal.fire({
+                                        position: 'center',
+                                        icon: 'success',
+                                        title: 'Sign up Successful',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    })
+                                }
+                            })
+                    })
                 navigate('/')
             })
             .catch(error => {
@@ -42,19 +62,39 @@ const SignIn = () => {
             })
     }
 
-    const handleGoogle = () =>{
+    const handleGoogle = () => {
         googleSignIn()
-            .then(result =>{
-                const loggedUser =result.user;
+            .then(result => {
+                const loggedUser = result.user;
                 console.log(loggedUser)
-                Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: 'Sign up Successful',
-                    showConfirmButton: false,
-                    timer: 1500
+
+                const savedUser = {
+                    name: loggedUser.displayName,
+                    email: loggedUser.email
+                }
+
+                fetch('http://localhost:5000/users', {
+                    method: "POST",
+                    headers: {
+                        'content-type': "application/json"
+                    },
+                    body: JSON.stringify(savedUser)
                 })
-                navigate(from, {replace: true });
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.insertedId) {
+
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'success',
+                                title: 'Sign up Successful',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                        }
+                    })
+
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 console.log(error.message);
@@ -94,7 +134,7 @@ const SignIn = () => {
                                             <span className="label-text text-white">Name</span>
                                         </label>
                                         <input type="text"
-                                         placeholder="Enter your Name..."
+                                            placeholder="Enter your Name..."
                                             {...register("name", { required: true })}
                                             className="input input-bordered" />
                                         {errors.name && <span className='text-red-600 font-bold text-lg mt-2'>Name field is required</span>}
