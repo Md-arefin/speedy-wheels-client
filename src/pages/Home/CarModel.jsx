@@ -8,7 +8,7 @@ const CarModel = () => {
         fetch('http://localhost:5000/cars')
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 setCars(data)
             })
     }, [])
