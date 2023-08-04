@@ -10,13 +10,28 @@ const BookCar = () => {
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
 
+    const handleSubmit = async (event) =>{
+        event.preventDefault();
+        const form = event.target;
+        const carsModel = form.carsModel.value;
+        const pickUpLocation = form.pickUpLocation.value;
+        const dropOfLocation = form.dropOfLocation.value;
+        const pickUpDate = startDate;
+        const dropOfDate = endDate;
+
+        console.log(carsModel,',', pickUpDate,',', pickUpLocation,',', dropOfLocation,',', dropOfDate)
+
+    }
+
     return (
         <div className='mt-[800px]'>
             <div className='text-center'>
                 <h1 className='text-3xl font-bold '>Book Your Dream car</h1>
             </div>
-            {/*  */}
-            <form className='lg:mx-20 grid grid-cols-1 md:grid-cols-3 mt-20'>
+
+            {/* Form for cars booking */}
+
+            <form onSubmit={handleSubmit} className='lg:mx-20 grid grid-cols-1 md:grid-cols-3 mt-20'>
 
                 <div>
                     <div>
