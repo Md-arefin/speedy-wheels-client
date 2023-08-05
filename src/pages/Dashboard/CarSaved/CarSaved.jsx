@@ -31,9 +31,9 @@ const CarSaved = () => {
                             <th>Image</th>
                             <th>Car Model</th>
                             <th>Pick-Up</th>
-                            <th>Drop Of</th>
-                            <th>Rent per Days</th>
+                            <th>Drop-Of</th>
                             <th>Total Days</th>
+                            <th>Rent per Days</th>
                             <th>Car Rent</th>
                             <th>Payment</th>
                             <th>Delete</th>
@@ -74,10 +74,9 @@ const CarSaved = () => {
                                             <p>
                                                 {car.dropOfDate}
                                             </p>
-
                                         </div>
                                     </td>
-                                    <td>{car.numberOfDays}</td>
+                                    <td className='text-center'>{car.numberOfDays}</td>
                                     <td className='text-right font-bold'>${car.carRent}</td>
                                     <td className='text-right font-bold'>${car.totalRent}</td>
                                     <td>
@@ -86,14 +85,9 @@ const CarSaved = () => {
                                     <td>
                                         <FaTrashRestore     className='h-8 w-8 cursor-pointer'/>
                                     </td>
-                                
-
                                 </tr>
                             )
                         }
-
-                        {/* row 2 */}
-
                     </tbody>
                 </table>
             </div>
