@@ -17,7 +17,7 @@ const BestDeals = () => {
                         Best valued deals you <br /> will ever find
                     </h1>
                     <p className='text-neutral-500  text-sm'>Our Cars offer numerous advantages, making them a compelling choice. They provide cost-effectiveness, flexibility, and convenience, allowing individuals to access vehicles without the burden of ownership. Rentals also cater to specific needs, offering a wide range of vehicle options, enabling exploration, and reducing environmental impact.</p>
-                    <button className='btn bg-red-600 text-white px-5 text-lg font-bold'>Find Details  <MdKeyboardArrowRight className='text-2xl' /></button>
+                    <button className='btn bg-red-600 text-white hover:text-black px-5 text-lg font-bold'>Find Details  <MdKeyboardArrowRight className='text-2xl' /></button>
                 </div>
 
                 <div className='space-y-5'>

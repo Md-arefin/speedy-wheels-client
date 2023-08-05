@@ -17,6 +17,38 @@ const Footer = () => {
                         <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="fill-current"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path></svg></a>
                     </div>
                 </div>
+                <div>
+                    <span className="footer-title">Services</span>
+                    <a className="link link-hover">Branding</a>
+                    <a className="link link-hover">Design</a>
+                    <a className="link link-hover">Marketing</a>
+                    <a className="link link-hover">Advertisement</a>
+                </div>
+                <div>
+                    <span className="footer-title">Company</span>
+                    <a className="link link-hover">About us</a>
+                    <a className="link link-hover">Contact</a>
+                    <a className="link link-hover">Jobs</a>
+                    <a className="link link-hover">Press kit</a>
+                </div>
+                <div>
+                    <span className="footer-title">Legal</span>
+                    <a className="link link-hover">Terms of use</a>
+                    <a className="link link-hover">Privacy policy</a>
+                    <a className="link link-hover">Cookie policy</a>
+                </div>
+                <div>
+                    <span className="footer-title">Newsletter</span>
+                    <div className="form-control w-80">
+                        <label className="label">
+                            <span className="label-text text-white">Enter your email address</span>
+                        </label>
+                        <div className="relative">
+                            <input type="text" placeholder="username@site.com" className="input input-bordered w-full pr-16 text-black" />
+                            <button className="btn bg-rose-900  absolute top-0 right-0 text-white rounded-l-none">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
             </footer>
             <div className="footer footer-center p-4 bg-base-300 text-base-content">
                 <div>
