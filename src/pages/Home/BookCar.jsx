@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { BsFillCarFrontFill, BsFillCartCheckFill } from 'react-icons/bs';
 import { MdEditLocationAlt } from 'react-icons/md';
 import { MdOutlineCalendarMonth, MdCalendarMonth } from 'react-icons/md';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { AuthContext } from '../../Provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const BookCar = () => {
+
+    const { user} = useContext(AuthContext)
 
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
@@ -39,6 +43,7 @@ const BookCar = () => {
             // console.log(carDoor, carFuel, carImage, carRent, carTransmission, carYear)
 
             // Combine form data with car details
+
             const formData = {
                 carsModel,
                 pickUpLocation,
@@ -50,10 +55,31 @@ const BookCar = () => {
                 carImage,
                 carRent,
                 carTransmission,
-                carYear
+                carYear,
+                email : user?.email
             };
 
             console.log(formData)
+
+            // send rental data to DB
+            await fetch('http://localhost:5000/cart-rent' , {
+                method: "POST",
+                headers: {
+                    "content-type" : "application/json",
+                },
+                body: JSON.stringify(formData)
+            }).then( res => res.json())
+            .then(data => {
+                if(data.insertedId){
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Car booked successfully',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
 
 
         } catch (error) {
