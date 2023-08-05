@@ -6,7 +6,7 @@ import { AuthContext } from '../../Provider/AuthProvider';
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const { user, logOut } = useContext(AuthContext);
-    
+
     const navItems =
         <>
             <li className='text-lg font-bold hover:bg-rose-800  rounded'>
@@ -24,6 +24,12 @@ const Navbar = () => {
             <li className='text-lg font-bold hover:bg-rose-800 rounded'>
                 <Link to="contact" className='hover:text-white'>Contact</Link>
             </li>
+
+            {
+                user ? <li className='text-lg font-bold hover:bg-rose-800 rounded'>
+                    <Link to="dashboard/saved-car" className='hover:text-white'>Dashboard</Link>
+                </li> : ''
+            }
         </>
 
 
@@ -34,7 +40,7 @@ const Navbar = () => {
     }
 
 
-    
+
 
     const handleScroll = () => {
         setIsScrolled(window.screenY >= 20);
