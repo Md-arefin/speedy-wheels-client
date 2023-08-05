@@ -10,7 +10,7 @@ const BookCar = () => {
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
 
-    const handleSubmit = async (event) =>{
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const form = event.target;
         const carsModel = form.carsModel.value;
@@ -19,7 +19,46 @@ const BookCar = () => {
         const pickUpDate = startDate;
         const dropOfDate = endDate;
 
-        console.log(carsModel,',', pickUpDate,',', pickUpLocation,',', dropOfLocation,',', dropOfDate)
+        // console.log(carsModel, ',', pickUpDate, ',', pickUpLocation, ',', dropOfLocation, ',', dropOfDate)
+        try {
+            const cars = await fetch(`http://localhost:5000/cars/${carsModel}`)
+            if (!cars.ok) {
+                throw new Error('Car not found');
+            }
+            const data = await cars.json();
+
+            // data from fetch
+
+            const carImage = data.picture;
+            const carRent = data.rent;
+            const carFuel = data.fuel;
+            const carDoor = data.doors;
+            const carYear = data.year;
+            const carTransmission = data.transmission;
+
+            // console.log(carDoor, carFuel, carImage, carRent, carTransmission, carYear)
+
+            // Combine form data with car details
+            const formData = {
+                carsModel,
+                pickUpLocation,
+                dropOfLocation,
+                pickUpDate,
+                dropOfDate,
+                carDoor,
+                carFuel,
+                carImage,
+                carRent,
+                carTransmission,
+                carYear
+            };
+
+            console.log(formData)
+
+
+        } catch (error) {
+            console.error('Error booking car:', error);
+        }
 
     }
 
@@ -44,7 +83,7 @@ const BookCar = () => {
                             <option value="Mercedes-Benz E-Class">Mercedes-Benz E-Class</option>
                             <option value="Bentley Continental GT">Bentley Continental GT</option>
                             <option value="Mercedes-Benz GLE Coupe">Mercedes-Benz GLE Coupe</option>
-                            <option value="Mini Cooper Countryman">Mini Cooper Countryman</option>
+                            <option value="Chevrolet Camaro">Chevrolet Camaro</option>
                         </select>
                     </div>
                     <div>
