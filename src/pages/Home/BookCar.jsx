@@ -9,10 +9,11 @@ import Swal from 'sweetalert2';
 
 const BookCar = () => {
 
-    const { user} = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
 
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
+
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -23,7 +24,14 @@ const BookCar = () => {
         const pickUpDate = startDate;
         const dropOfDate = endDate;
 
-        // console.log(carsModel, ',', pickUpDate, ',', pickUpLocation, ',', dropOfLocation, ',', dropOfDate)
+        // Calculate the number of milliseconds between the two dates
+        const timeDifference = dropOfDate - pickUpDate;
+        // Calculate the number of days between the two dates
+        const numberOfDays = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+
+        // console.log(timeDifference, 'days', numberOfDays)
+
+        // console.log( pickUpDate, ',', dropOfDate)
         try {
             const cars = await fetch(`http://localhost:5000/cars/${carsModel}`)
             if (!cars.ok) {
@@ -40,7 +48,9 @@ const BookCar = () => {
             const carYear = data.year;
             const carTransmission = data.transmission;
 
-            // console.log(carDoor, carFuel, carImage, carRent, carTransmission, carYear)
+            const totalRent = (carRent * numberOfDays).toFixed(2);
+
+            // console.log(totalRent)
 
             // Combine form data with car details
 
@@ -52,11 +62,13 @@ const BookCar = () => {
                 dropOfDate,
                 carDoor,
                 carFuel,
-                carImage,
                 carRent,
+                carImage,
+                totalRent,
                 carTransmission,
                 carYear,
-                email : user?.email
+                email : user?.email,
+                numberOfDays
             };
 
             console.log(formData)
@@ -165,7 +177,7 @@ const BookCar = () => {
                         <BsFillCartCheckFill />
                         <input type='submit' value='Book now' />
                     </label>
-                      
+
                 </div>
             </form>
         </div>

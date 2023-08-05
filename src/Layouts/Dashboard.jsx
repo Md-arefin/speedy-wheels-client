@@ -8,7 +8,7 @@ const Dashboard = () => {
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content flex flex-col items-center justify-center">
+            <div className="drawer-content flex flex-col">
                 {/* Page content here */}
 
                 <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Dashboard</label>
@@ -39,12 +39,12 @@ const Dashboard = () => {
                     </li>
                     <li>
 
-                        <NavLink className='text-white hover:text-black bg-rose-800 text-lg border-b-4 border-0 border-black flex justify-center' to='/dashboard/saved-car'>Ride Saved</NavLink>
+                        <NavLink className='text-white hover:text-black bg-rose-800 text-lg border-b-4 border-0 border-black flex justify-center' to='/dashboard/saved-car'>Ride Booked</NavLink>
 
                     </li>
                     <li>
 
-                        <NavLink className='text-white hover:text-black bg-rose-800 text-lg border-b-4 border-0 border-black flex justify-center' to='/dashboard/car-booked'>Ride Confirm</NavLink>
+                        <NavLink className='text-white hover:text-black bg-rose-800 text-lg border-b-4 border-0 border-black flex justify-center' to='/dashboard/car-booked'>Car Rent</NavLink>
 
                     </li>
                     <li>
