@@ -161,10 +161,11 @@ const BookCar = () => {
                             <option value="Denmark">Denmark</option>
                         </select>
                     </div>
-                    <div className='flex btn ml-6 lg:w-[260px] text-lg md:ml-[48px] md:mt-10 bg-rose-900 text-white hover:text-black w-[280px]'>
+                    <label className='flex btn ml-6 lg:w-[260px] text-lg md:ml-[48px] md:mt-10 bg-rose-900 text-white hover:text-black w-[280px]'>
                         <BsFillCartCheckFill />
                         <input type='submit' value='Book now' />
-                    </div>
+                    </label>
+                      
                 </div>
             </form>
         </div>
