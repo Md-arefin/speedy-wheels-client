@@ -12,6 +12,8 @@
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
     "@lottiefiles/react-lottie-player": "^3.5.3",
+    "@stripe/react-stripe-js": "^2.1.1",
+    "@stripe/stripe-js": "^1.54.2",
     "firebase": "^10.0.0",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",

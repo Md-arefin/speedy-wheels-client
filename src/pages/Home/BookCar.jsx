@@ -6,6 +6,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const BookCar = () => {
 
@@ -14,88 +15,106 @@ const BookCar = () => {
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
 
+    const navigate = useNavigate();
+    const location = useLocation();
+
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const form = event.target;
-        const carsModel = form.carsModel.value;
-        const pickUpLocation = form.pickUpLocation.value;
-        const dropOfLocation = form.dropOfLocation.value;
-        const pickUpDate = startDate;
-        const dropOfDate = endDate;
+        if(user && user?.email){
 
-        // Calculate the number of milliseconds between the two dates
-        const timeDifference = dropOfDate - pickUpDate;
-        // Calculate the number of days between the two dates
-        const numberOfDays = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            const form = event.target;
+            const carsModel = form.carsModel.value;
+            const pickUpLocation = form.pickUpLocation.value;
+            const dropOfLocation = form.dropOfLocation.value;
+            const pickUpDate = startDate;
+            const dropOfDate = endDate;
 
-        // console.log(timeDifference, 'days', numberOfDays)
+            // Calculate the number of milliseconds between the two dates
+            const timeDifference = dropOfDate - pickUpDate;
+            // Calculate the number of days between the two dates
+            const numberOfDays = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
 
-        // console.log( pickUpDate, ',', dropOfDate)
-        try {
-            const cars = await fetch(`http://localhost:5000/cars/${carsModel}`)
-            if (!cars.ok) {
-                throw new Error('Car not found');
-            }
-            const data = await cars.json();
+            // console.log(timeDifference, 'days', numberOfDays)
 
-            // data from fetch
+            // console.log( pickUpDate, ',', dropOfDate)
+            try {
+                const cars = await fetch(`http://localhost:5000/cars/${carsModel}`)
+                if (!cars.ok) {
+                    throw new Error('Car not found');
+                }
+                const data = await cars.json();
 
-            const carImage = data.picture;
-            const carRent = data.rent;
-            const carFuel = data.fuel;
-            const carDoor = data.doors;
-            const carYear = data.year;
-            const carTransmission = data.transmission;
+                // data from fetch
 
-            const totalRent = (carRent * numberOfDays).toFixed(2);
+                const carImage = data.picture;
+                const carRent = data.rent;
+                const carFuel = data.fuel;
+                const carDoor = data.doors;
+                const carYear = data.year;
+                const carTransmission = data.transmission;
 
-            // console.log(totalRent)
+                const totalRent = (carRent * numberOfDays).toFixed(2);
 
-            // Combine form data with car details
+                // console.log(totalRent)
 
-            const formData = {
-                carsModel,
-                pickUpLocation,
-                dropOfLocation,
-                pickUpDate,
-                dropOfDate,
-                carDoor,
-                carFuel,
-                carRent,
-                carImage,
-                totalRent,
-                carTransmission,
-                carYear,
-                email : user?.email,
-                numberOfDays
-            };
+                // Combine form data with car details
 
-            console.log(formData)
+                const formData = {
+                    carsModel,
+                    pickUpLocation,
+                    dropOfLocation,
+                    pickUpDate,
+                    dropOfDate,
+                    carDoor,
+                    carFuel,
+                    carRent,
+                    carImage,
+                    totalRent,
+                    carTransmission,
+                    carYear,
+                    email: user?.email,
+                    numberOfDays
+                };
 
-            // send rental data to DB
-            await fetch('http://localhost:5000/cart-rent' , {
-                method: "POST",
-                headers: {
-                    "content-type" : "application/json",
-                },
-                body: JSON.stringify(formData)
-            }).then( res => res.json())
-            .then(data => {
-                if(data.insertedId){
-                    Swal.fire({
-                        position: 'center',
-                        icon: 'success',
-                        title: 'Car booked successfully',
-                        showConfirmButton: false,
-                        timer: 1500
+                console.log(formData)
+
+                // send rental data to DB
+                await fetch('http://localhost:5000/cart-rent', {
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/json",
+                    },
+                    body: JSON.stringify(formData)
+                }).then(res => res.json())
+                    .then(data => {
+                        if (data.insertedId) {
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'success',
+                                title: 'Car booked successfully',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                        }
                     })
+            } catch (error) {
+                console.error('Error booking car:', error);
+            }
+        } 
+        else {
+            Swal.fire({
+                title: 'Please login to save your ride',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Login Now!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate('/login',  {state: {from: location}})
                 }
             })
-
-
-        } catch (error) {
-            console.error('Error booking car:', error);
         }
 
     }
