@@ -2,6 +2,7 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useContext, useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../../Provider/AuthProvider';
+import './payment.css'
 
 const CheckoutForm = ({ price, id }) => {
 
@@ -35,7 +36,7 @@ const CheckoutForm = ({ price, id }) => {
                 setBookedCar(data)
                 console.log(data)
             })
-    }, [id])
+    }, [])
 
     const carImage = bookedCar[0]?.carImage;
     const _id = bookedCar[0]?._id;

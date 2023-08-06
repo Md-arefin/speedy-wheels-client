@@ -1,3 +1,4 @@
+import { Controls, Player } from '@lottiefiles/react-lottie-player';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import React from 'react';
@@ -12,12 +13,20 @@ const Payment = () => {
     const searchParams = new URLSearchParams(location.search);
     const totalRent = searchParams.get('totalRent');
     const _id = searchParams.get('_id');
-   
+
     return (
         <div>
-            <h1 className='text-center text-3xl mt-10 font-bold'>This is payment page</h1>
-
-
+            <div>
+                <Player
+                    autoplay
+                    loop
+                    src="https://lottie.host/3523ee44-d813-47ee-9654-33ce4c4e9b31/AL5xyHuCbf.json"
+                    className='w-1/2'
+                >
+                    <Controls visible={!true} buttons={['play', 'repeat', 'frame', 'debug']} />
+                </Player>
+            </div>
+            <h1 className='text-center text-3xl mt-10 font-bold'>Secure Payment - Complete Your Booking</h1>
             <Elements stripe={stripePromise}>
                 <CheckoutForm price={totalRent} id={_id}></CheckoutForm>
             </Elements>
