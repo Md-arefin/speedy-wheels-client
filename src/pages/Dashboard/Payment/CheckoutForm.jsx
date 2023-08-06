@@ -1,5 +1,6 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useContext, useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 import { AuthContext } from '../../../Provider/AuthProvider';
 
 const CheckoutForm = ({ price }) => {
@@ -9,6 +10,8 @@ const CheckoutForm = ({ price }) => {
     const elements = useElements();
     const [cardError, setCardError] = useState('');
     const [clientSecret, setClientSecret] = useState("");
+    const [transactionId, setTransactionId] = useState("");
+    const [processing, setProcessing] = useState(false);
 
     useEffect(() => {
 
@@ -49,8 +52,10 @@ const CheckoutForm = ({ price }) => {
             setCardError(error.message)
         } else {
             setCardError('')
-            console.log('paymentMethod', paymentMethod)
+            // console.log('paymentMethod', paymentMethod)
         }
+
+        setProcessing(true)
 
         const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(clientSecret, {
                 // paymentMethod: {
@@ -69,7 +74,19 @@ const CheckoutForm = ({ price }) => {
             console.log('Error confirming payment:', confirmError)
         }
 
+        setProcessing(false)
+
         console.log(paymentIntent, 'paymentIntent')
+        if(paymentIntent.status = "succeeded"){
+            setTransactionId(paymentIntent.id);
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Payment successful',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        }
     }
 
     return (
@@ -91,11 +108,12 @@ const CheckoutForm = ({ price }) => {
                         },
                     }}
                 />
-                <button className='btn bg-rose-800 text-white hover:text-black w-20 text-xl mt-10 ml-10' type="submit" disabled={!stripe || !clientSecret}>
+                <button className='btn bg-rose-800 text-white hover:text-black w-20 text-xl mt-10 ml-10' type="submit" disabled={!stripe || !clientSecret || processing}>
                     Pay
                 </button>
             </form>
             <p className='text-red-600 text-lg font-semibold text-center'>{cardError}</p>
+            <p className='text-red-600 text-lg font-semibold text-center'>Your transaction id is :{transactionId}</p>
         </>
     );
 };
