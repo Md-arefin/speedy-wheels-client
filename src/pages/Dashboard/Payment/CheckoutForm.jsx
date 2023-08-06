@@ -166,8 +166,8 @@ const CheckoutForm = ({ price, id }) => {
                         },
                     }}
                 />
-                <button className='btn bg-rose-800 text-white hover:text-black w-20 text-xl mt-10 ml-10' type="submit" disabled={!stripe || !clientSecret || processing}>
-                    Pay
+                <button className='btn bg-rose-800 text-white hover:text-black w-1/2 text-xl mt-10 ml-10' type="submit" disabled={!stripe || !clientSecret || processing}>
+                    Payment
                 </button>
             </form>
             <p className='text-red-600 text-lg font-semibold text-center'>{cardError}</p>
