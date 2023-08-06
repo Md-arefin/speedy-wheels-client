@@ -45,7 +45,7 @@ const CarTable = ({ car, i }) => {
                 <td className='text-right font-bold'>${carRent}</td>
                 <td className='text-right font-bold'>${totalRent}</td>
                 <td>
-                    <Link to={`/dashboard/payment?totalRent=${totalRent}`} >
+                    <Link to={`/dashboard/payment?totalRent=${totalRent}&_id=${_id}`} >
                         <button className='btn bg-rose-800  text-white hover:text-black'>Pay</button>
                     </Link>
                 </td>

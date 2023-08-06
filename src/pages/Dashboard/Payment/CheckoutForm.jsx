@@ -3,15 +3,16 @@ import React, { useContext, useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../../Provider/AuthProvider';
 
-const CheckoutForm = ({ price }) => {
-    const { user } = useContext(AuthContext);
+const CheckoutForm = ({ price, id }) => {
 
+    const { user } = useContext(AuthContext);
     const stripe = useStripe();
     const elements = useElements();
     const [cardError, setCardError] = useState('');
     const [clientSecret, setClientSecret] = useState("");
     const [transactionId, setTransactionId] = useState("");
     const [processing, setProcessing] = useState(false);
+    const [bookedCar, setBookedCar] = useState([]);
 
     useEffect(() => {
 
@@ -23,11 +24,34 @@ const CheckoutForm = ({ price }) => {
             body: JSON.stringify({ price })
         })
             .then(res => res.json())
-            .then(data =>setClientSecret(data.clientSecret)
+            .then(data => setClientSecret(data.clientSecret)
             )
-        }, [])
+    }, [])
 
-        console.log(clientSecret)
+    useEffect(() => {
+        fetch(`http://localhost:5000/car-booked/${id}`)
+            .then(res => res.json())
+            .then(data => {
+                setBookedCar(data)
+                console.log(data)
+            })
+    }, [id])
+
+    const carImage = bookedCar[0]?.carImage;
+    const _id = bookedCar[0]?._id;
+    const carsModel = bookedCar[0]?.carsModel;
+    const pickUpLocation = bookedCar[0]?.pickUpLocation;
+    const pickUpDate = bookedCar[0]?.pickUpDate;
+    const dropOfLocation = bookedCar[0]?.dropOfLocation;
+    const dropOfDate = bookedCar[0]?.dropOfDate;
+    const numberOfDays = bookedCar[0]?.numberOfDays;
+    const carRent = bookedCar[0]?.carRent;
+    const carDoor = bookedCar[0]?.carDoor;
+    const carFuel = bookedCar[0]?.carFuel;
+    const carTransmission = bookedCar[0]?.carTransmission;
+    const carYear = bookedCar[0]?.carYear;
+
+    console.log(clientSecret);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -58,33 +82,66 @@ const CheckoutForm = ({ price }) => {
         setProcessing(true)
 
         const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(clientSecret, {
-                // paymentMethod: {
-                //     card: card,
-                //     billing_details: {
-                //         name: user?.displayName || 'anonymous',
-                //         email: user?.email || 'unknown'
-                //     },
-                // },
-                    payment_method: paymentMethod.id,
-                    receipt_email: user?.email,
-            },
+            // paymentMethod: {
+            //     card: card,
+            //     billing_details: {
+            //         name: user?.displayName || 'anonymous',
+            //         email: user?.email || 'unknown'
+            //     },
+            // },
+            payment_method: paymentMethod.id,
+            receipt_email: user?.email,
+        },
         );
 
-        if(confirmError){
+        if (confirmError) {
             console.log('Error confirming payment:', confirmError)
         }
 
         setProcessing(false)
 
         console.log(paymentIntent, 'paymentIntent')
-        if(paymentIntent.status = "succeeded"){
+
+        if (paymentIntent.status = "succeeded") {
             setTransactionId(paymentIntent.id);
-            Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Payment successful',
-                showConfirmButton: false,
-                timer: 1500
+           
+            // save payment to server
+
+            const payment = {
+                email: user?.email,
+                transactionId: paymentIntent.id,
+                price,
+                carsModel,
+                pickUpLocation,
+                dropOfLocation,
+                pickUpDate,
+                dropOfDate,
+                carDoor,
+                carFuel,
+                carRent,
+                carImage,
+                carTransmission,
+                carYear,
+                numberOfDays
+            }
+            fetch('http://localhost:5000/payments' ,{
+                method: "POST",
+                headers: {
+                    "content-type": 'application/json'
+                },
+                body: JSON.stringify(payment)
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.insertedId){
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Payment successful',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
             })
         }
     }
@@ -113,7 +170,9 @@ const CheckoutForm = ({ price }) => {
                 </button>
             </form>
             <p className='text-red-600 text-lg font-semibold text-center'>{cardError}</p>
-            <p className='text-red-600 text-lg font-semibold text-center'>Your transaction id is :{transactionId}</p>
+            {
+                transactionId && <p className='text-green-600 text-lg font-semibold text-center'>Your transaction id is :{transactionId}</p>
+            }
         </>
     );
 };
