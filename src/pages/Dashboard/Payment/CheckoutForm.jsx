@@ -1,11 +1,30 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../../Provider/AuthProvider';
 
-const CheckoutForm = () => {
+const CheckoutForm = ({ price }) => {
+    const { user } = useContext(AuthContext);
 
     const stripe = useStripe();
     const elements = useElements();
     const [cardError, setCardError] = useState('');
+    const [clientSecret, setClientSecret] = useState("");
+
+    useEffect(() => {
+
+        fetch('http://localhost:5000/create-payment-intent', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({ price })
+        })
+            .then(res => res.json())
+            .then(data =>setClientSecret(data.clientSecret)
+            )
+        }, [])
+
+        console.log(clientSecret)
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -32,6 +51,25 @@ const CheckoutForm = () => {
             setCardError('')
             console.log('paymentMethod', paymentMethod)
         }
+
+        const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(clientSecret, {
+                // paymentMethod: {
+                //     card: card,
+                //     billing_details: {
+                //         name: user?.displayName || 'anonymous',
+                //         email: user?.email || 'unknown'
+                //     },
+                // },
+                    payment_method: paymentMethod.id,
+                    receipt_email: user?.email,
+            },
+        );
+
+        if(confirmError){
+            console.log('Error confirming payment:', confirmError)
+        }
+
+        console.log(paymentIntent, 'paymentIntent')
     }
 
     return (
@@ -53,7 +91,7 @@ const CheckoutForm = () => {
                         },
                     }}
                 />
-                <button className='btn bg-rose-800 text-white hover:text-black w-20 text-xl mt-10 ml-10' type="submit" disabled={!stripe}>
+                <button className='btn bg-rose-800 text-white hover:text-black w-20 text-xl mt-10 ml-10' type="submit" disabled={!stripe || !clientSecret}>
                     Pay
                 </button>
             </form>

@@ -54,7 +54,7 @@ const BookCar = () => {
                 const carYear = data.year;
                 const carTransmission = data.transmission;
 
-                const totalRent = (carRent * numberOfDays).toFixed(2);
+                const totalRent = parseFloat((carRent * numberOfDays).toFixed(2));
 
                 // console.log(totalRent)
 
