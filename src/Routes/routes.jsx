@@ -6,7 +6,6 @@ import Contact from "../pages/Contact/Contact";
 import CarBooked from "../pages/Dashboard/CarBooked/CarBooked";
 import CarSaved from "../pages/Dashboard/CarSaved/CarSaved";
 import Payment from "../pages/Dashboard/Payment/Payment";
-import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
 import ErrorPage from "../pages/ErrorPage";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
@@ -61,10 +60,6 @@ export const router = createBrowserRouter([
       {
         path: 'payment',
         element: <Payment/>
-      },
-      {
-        path: 'payment-history',
-        element: <PaymentHistory/>
       },
     ]
   }

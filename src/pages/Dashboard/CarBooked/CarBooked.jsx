@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../Provider/AuthProvider';
+import { BsCashCoin } from 'react-icons/bs';
 
 const CarBooked = () => {
 
@@ -30,10 +31,17 @@ const CarBooked = () => {
                                 <table className="table table-zebra">
                                     <tbody>
                                         <tr>
+                                            <th className='font-semibold text-lg text-black'>Status:</th>
+                                            <td>
+                                                <div className="badge badge-success w-1/2 gap-3 text-black text-lg font-bold h-8 flex items-center justify-center ">
+                                                  <BsCashCoin/>  {car?.status}
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
                                             <th className='font-semibold text-lg text-black'>Pick-up Location:</th>
                                             <td className='text-black text-lg font-thin'>{car.pickUpLocation}</td>
                                         </tr>
-
 
                                         <tr>
                                             <td><span className='font-semibold text-lg'>Pick-up Date: </span></td>
@@ -63,12 +71,12 @@ const CarBooked = () => {
                                             <td>{car.numberOfDays}</td>
                                         </tr>
                                         <tr>
-                                            <td><span className='font-semibold text-lg'>Car rent: </span></td>
-                                            <td>$ {car.carRent}</td>
+                                            <td><span className='font-semibold text-lg'>Rent per day: </span></td>
+                                            <td className='text-lg font-bold'>$ {car.carRent}</td>
                                         </tr>
                                         <tr>
-                                            <td><span className='font-semibold text-lg'>Total Price: </span></td>
-                                            <td>$ {car.price}</td>
+                                            <td><span className='font-semibold text-lg '>Total Price: </span></td>
+                                            <td className='text-lg font-bold'>$ {car.price}</td>
                                         </tr>
                                         <tr>
                                             <td><span className='font-semibold text-lg'>Transaction Id: </span></td>

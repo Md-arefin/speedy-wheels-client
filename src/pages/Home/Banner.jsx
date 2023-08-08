@@ -3,6 +3,7 @@ import { MdKeyboardArrowRight } from 'react-icons/md';
 import { BsFillPatchCheckFill } from 'react-icons/bs';
 import bg from '../../assets/3484652.jpg'
 import red from '../../assets/cars/red.png'
+import { Link } from 'react-router-dom';
 
 const Banner = () => {
     return (
@@ -17,14 +18,16 @@ const Banner = () => {
                         <div className='font-bold space-y-5 mb-10'>
                             <p className='xl:text-lg'>Plan your trip now</p>
                             <h1 className='text-5xl lg:text-6xl xl:text-7xl'>
-                                Save <span className='text-red-600'>big</span>  with our <br className='hidden md:block'/> car rental
+                                Save <span className='text-red-600'>big</span>  with our <br className='hidden md:block' /> car rental
                             </h1>
-                            <p className='text-neutral-400 text-sm'>Rent the car of your dreams. Unbeatable prices, unlimited miles, <br className='hidden md:block'/> flexible pick-up options and much more.</p>
+                            <p className='text-neutral-400 text-sm'>Rent the car of your dreams. Unbeatable prices, unlimited miles, <br className='hidden md:block' /> flexible pick-up options and much more.</p>
                         </div>
                         <div className="flex flex-col md:flex-row gap-10">
                             <button className='btn bg-red-600 text-white px-5 text-lg font-bold hover:text-black'>Book ride <BsFillPatchCheckFill className='text-xl' /></button>
 
-                            <button className='btn bg-black text-white px-5 text-lg font-bold hover:text-black'>Learn More <MdKeyboardArrowRight className='text-2xl' /> </button>
+                            <Link to='/about'>
+                                <button className='btn bg-black text-white px-5 text-lg font-bold hover:text-black'>Learn More <MdKeyboardArrowRight className='text-2xl' /> </button>
+                            </Link>
                         </div>
                     </div>
 

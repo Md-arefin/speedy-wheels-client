@@ -1,11 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { FaTrashRestore } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import { AuthContext } from '../../Provider/AuthProvider';
+import Swal from 'sweetalert2';
 
-const CarTable = ({ car, i }) => {
-  
+const CarTable = ({ car, i, handleDelete }) => {
+
     const { carImage, _id, carsModel, pickUpLocation, pickUpDate, dropOfLocation, dropOfDate, numberOfDays, carRent, totalRent } = car;
+
+    
+
 
     return (
         <>
@@ -50,7 +53,7 @@ const CarTable = ({ car, i }) => {
                     </Link>
                 </td>
                 <td>
-                    <FaTrashRestore className='h-8 w-8 cursor-pointer' />
+                    <FaTrashRestore onClick={() => handleDelete(_id)} className='h-8 w-8 cursor-pointer hover:text-rose-800' />
                 </td>
             </tr>
         </>

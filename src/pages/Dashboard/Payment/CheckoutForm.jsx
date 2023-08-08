@@ -123,7 +123,8 @@ const CheckoutForm = ({ price, id }) => {
                 carImage,
                 carTransmission,
                 carYear,
-                numberOfDays
+                numberOfDays,
+                status: "Paid",
             }
             fetch('http://localhost:5000/payments' ,{
                 method: "POST",
