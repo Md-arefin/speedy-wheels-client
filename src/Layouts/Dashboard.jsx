@@ -47,11 +47,7 @@ const Dashboard = () => {
                         <NavLink className='text-white hover:text-black bg-rose-800 text-lg border-b-4 border-0 border-black flex justify-center' to='/dashboard/car-booked'>Car Rent</NavLink>
 
                     </li>
-                    <li>
-
-                        <NavLink className='text-white hover:text-black bg-rose-800 text-lg border-b-4 border-0 border-black flex justify-center' to='/dashboard/payment'>Payment</NavLink>
-
-                    </li>
+                    
                     <li>
 
                         <NavLink className='text-white hover:text-black bg-rose-800 text-lg border-b-4 border-0 border-black flex justify-center' to='/dashboard/payment-history'>Payment History</NavLink>

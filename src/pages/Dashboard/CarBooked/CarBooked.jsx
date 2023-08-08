@@ -21,22 +21,70 @@ const CarBooked = () => {
             <div className='grid grid-cols-1 lg:grid-cols-2 gap-5 mx-10 w-full'>
                 {
                     rentedCar.map((car, i) => <div key={car._id} className="card w-full bg-base-100 mt-5 shadow-xl">
-                        <figure><img src={car.carImage} alt={car.carsModel} /></figure>
+                        <figure><img className='h-[350px]' src={car.carImage} alt={car.carsModel} /></figure>
                         <div className="card-body">
-                            <h2 className="card-title font-bold text-2xl">{car.carsModel}</h2>
-                            <p><span className='font-semibold text-lg'>Pick-up Location: </span>{car.pickUpLocation}</p>
-                            <p><span className='font-semibold text-lg'>Pick-up Date: </span>{car.pickUpDate}</p>
-                            <p><span className='font-semibold text-lg'>Drop-of Location: </span>{car.dropOfLocation}</p>
-                            <p><span className='font-semibold text-lg'>Drop-of Date: </span>{car.dropOfDate}</p>
-                            <p><span className='font-semibold text-lg'>Number Of Days: </span>{car.numberOfDays}</p>
-                            <p><span className='font-semibold text-lg'>Total Rent: </span>{car.price}</p>
-                            <p><span className='font-semibold text-lg'>Transaction Id: </span>{car.transactionId}</p>
-                            <p><span className='font-semibold text-lg'>carTransmission: </span>{car.carTransmission}</p>
-                            <p><span className='font-semibold text-lg'>Fuel: </span>{car.carFuel}</p>
-                            <p><span className='font-semibold text-lg'>Rent per day: </span>{car.carRent}</p>
-                            <p><span className='font-semibold text-lg'>Year: </span>{car.carYear}</p>
-                            <p><span className='font-semibold text-lg'>Door: </span>{car.carDoor}</p>
-                            
+                            <h2 className="card-title flex justify-center items-center font-bold text-3xl">{car.carsModel}</h2>
+
+                            {/*  */}
+                            <div className="overflow-x-auto w-full mt-10 border-2 rounded-md">
+                                <table className="table table-zebra">
+                                    <tbody>
+                                        <tr>
+                                            <th className='font-semibold text-lg text-black'>Pick-up Location:</th>
+                                            <td className='text-black text-lg font-thin'>{car.pickUpLocation}</td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td><span className='font-semibold text-lg'>Pick-up Date: </span></td>
+                                            <td>{car.pickUpDate}</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td><span className='font-semibold text-lg'>Drop-Of Location: </span></td>
+                                            <td>{car.dropOfLocation}</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td><span className='font-semibold text-lg'>Drop-Of Date: </span></td>
+                                            <td>{car.dropOfDate}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span className='font-semibold text-lg'>Year: </span></td>
+                                            <td>{car.carYear}</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td><span className='font-semibold text-lg'>Transmission: </span></td>
+                                            <td>{car.carTransmission}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span className='font-semibold text-lg'>Number of days: </span></td>
+                                            <td>{car.numberOfDays}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span className='font-semibold text-lg'>Car rent: </span></td>
+                                            <td>$ {car.carRent}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span className='font-semibold text-lg'>Total Price: </span></td>
+                                            <td>$ {car.price}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span className='font-semibold text-lg'>Transaction Id: </span></td>
+                                            <td>{car.transactionId}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span className='font-semibold text-lg'>Fuel: </span></td>
+                                            <td>{car.carFuel}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span className='font-semibold text-lg'>Door: </span></td>
+                                            <td>{car.carDoor}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>)
                 }
