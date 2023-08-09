@@ -38,9 +38,12 @@ const CarSaved = () => {
                     .then(data => {
                         // console.log(data.deletedCount)
                         if (data.deletedCount > 0) {
+                            fetch(`http://localhost:5000/booked/${user?.email}`)
+                                .then(res => res.json())
+                                .then(data => setCarBooked(data))
                             Swal.fire(
                                 'Deleted!',
-                                'Your class has been deleted.',
+                                'Your car has been deleted.',
                                 'success'
                             )
                         }
