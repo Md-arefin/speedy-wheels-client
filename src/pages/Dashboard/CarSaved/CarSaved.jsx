@@ -11,7 +11,7 @@ const CarSaved = () => {
     const { user } = useContext(AuthContext);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/booked/${user?.email}`)
+        fetch(`https://speedy-wheel-server.onrender.com/booked/${user?.email}`)
             .then(res => res.json())
             .then(data => setCarBooked(data))
     }, [user])
@@ -31,14 +31,14 @@ const CarSaved = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 // console.log(id)
-                fetch(`http://localhost:5000/rented-car/${id}`, {
+                fetch(`https://speedy-wheel-server.onrender.com/rented-car/${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())
                     .then(data => {
                         // console.log(data.deletedCount)
                         if (data.deletedCount > 0) {
-                            fetch(`http://localhost:5000/booked/${user?.email}`)
+                            fetch(`https://speedy-wheel-server.onrender.com/booked/${user?.email}`)
                                 .then(res => res.json())
                                 .then(data => setCarBooked(data))
                             Swal.fire(

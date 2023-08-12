@@ -8,7 +8,7 @@ const CarBooked = () => {
     const [rentedCar, setRentedCar] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/rented-car/${user?.email}`)
+        fetch(`https://speedy-wheel-server.onrender.com/rented-car/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data)

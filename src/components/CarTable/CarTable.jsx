@@ -1,13 +1,10 @@
 import React from 'react';
 import { FaTrashRestore } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import Swal from 'sweetalert2';
 
 const CarTable = ({ car, i, handleDelete }) => {
 
     const { carImage, _id, carsModel, pickUpLocation, pickUpDate, dropOfLocation, dropOfDate, numberOfDays, carRent, totalRent } = car;
-
-    
 
 
     return (

@@ -39,7 +39,7 @@ const BookCar = () => {
 
             // console.log( pickUpDate, ',', dropOfDate)
             try {
-                const cars = await fetch(`http://localhost:5000/cars/${carsModel}`)
+                const cars = await fetch(`https://speedy-wheel-server.onrender.com/cars/${carsModel}`)
                 if (!cars.ok) {
                     throw new Error('Car not found');
                 }
@@ -80,7 +80,7 @@ const BookCar = () => {
                 console.log(formData)
 
                 // send rental data to DB
-                await fetch('http://localhost:5000/cart-rent', {
+                await fetch('https://speedy-wheel-server.onrender.com/cart-rent', {
                     method: "POST",
                     headers: {
                         "content-type": "application/json",

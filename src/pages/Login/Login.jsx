@@ -53,7 +53,7 @@ const Login = () => {
                     email: loggedUser.email
                 }
 
-                fetch('http://localhost:5000/users', {
+                fetch('https://speedy-wheel-server.onrender.com/users', {
                     method: "POST",
                     headers: {
                         'content-type': "application/json"

@@ -5,14 +5,14 @@ const CarModel = () => {
     const [cars, setCars] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/cars')
+        fetch('https://speedy-wheel-server.onrender.com/cars')
             .then(res => res.json())
             .then(data => {
                 // console.log(data)
                 setCars(data)
             })
     }, [])
-
+    
     return (
         <div>
             <div className='text-center'>
