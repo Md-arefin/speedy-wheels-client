@@ -1,7 +1,22 @@
 import React from 'react';
+import Swal from 'sweetalert2';
 import logo from '../../assets/logo.png'
 
 const Footer = () => {
+
+    const handleNewsTeller = event =>{
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: `${email} Successful`,
+            showConfirmButton: false,
+            timer: 1500
+        })
+    }
+
     return (
         <>
             <footer className="footer p-10 bg-black text-neutral-content">
@@ -39,15 +54,19 @@ const Footer = () => {
                 </div>
                 <div>
                     <span className="footer-title">Newsletter</span>
-                    <div className="form-control w-80">
+                    <form onSubmit={handleNewsTeller} className="form-control w-80">
                         <label className="label">
                             <span className="label-text text-white">Enter your email address</span>
                         </label>
-                        <div className="relative w-[90%]">
-                            <input type="text" placeholder="username@site.com" className="input input-bordered w-full pr-16 text-black" />
-                            <button className="btn bg-rose-900  absolute top-0 right-0 text-white rounded-l-none">Subscribe</button>
+                        <div className="relative w-[80%]">
+                            <input 
+                            type="email"
+                            name="email"
+                            placeholder="Enter your email" className="input border-none w-full pr-16 text-black" 
+                            required/>
+                            <button type='submit' className="btn bg-rose-900  absolute top-0 right-0 border-none text-white rounded-l-none">Subscribe</button>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </footer>
             <div className="footer footer-center p-4 bg-base-300 text-base-content">

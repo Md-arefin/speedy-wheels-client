@@ -82,9 +82,10 @@ const BookCar = () => {
                 // send rental data to DB
                 await fetch('https://speedy-wheel-server.onrender.com/cart-rent', {
                     method: "POST",
-                    headers: {
-                        "content-type": "application/json",
-                    },
+                       headers: {
+                            'content-type': "application/json",
+                            "authorization" : `Bearer ${localStorage.getItem("access-token")}`
+                        },
                     body: JSON.stringify(formData)
                 }).then(res => res.json())
                     .then(data => {

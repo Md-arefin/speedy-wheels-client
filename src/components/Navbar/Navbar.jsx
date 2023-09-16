@@ -65,7 +65,7 @@ const Navbar = () => {
 
     return (
        
-        <div className={`${isScrolled ? ' bg-slate-500 sticky top-0 w-[91%] lg:w-full' : 'bg-transparent -top-24'} max-w-screen-2xl navbar transition duration-300 ease-in-out z-10`} style={{transition: 'all 0.3 ease'}}>
+        <div className={`${isScrolled ? ' bg-slate-500 sticky top-0 w-full lg:w-full' : 'bg-transparent -top-24'} max-w-screen-2xl navbar transition duration-300 ease-in-out z-10`} style={{transition: 'all 0.3 ease'}}>
             <div className="navbar-start relative">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">

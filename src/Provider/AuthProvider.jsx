@@ -41,8 +41,25 @@ const AuthProvider = ({ children }) => {
     useEffect( () =>{
         const unsubscribe = onAuthStateChanged(auth, loggedUser =>{
             setUser(loggedUser);
+            
+            if(loggedUser?.email){
+                fetch('https://speedy-wheel-server.onrender.com/jwt', {
+                    method: "POST",
+                    headers: {
+                        'content-type' : "application/json",
+                    },
+                    body: JSON.stringify({ email: loggedUser?.email})
+                })
+                .then(res => res.json())
+                .then(data =>{
+                    localStorage.setItem("access-token", data?.token);
+                })
+            }
+            else{
+                localStorage.removeItem("access-token");
+            }
             setLoading(false)
-        })
+        });
         return () => unsubscribe()
     })
 

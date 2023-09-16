@@ -20,7 +20,7 @@ const CheckoutForm = ({ price, id }) => {
         fetch('https://speedy-wheel-server.onrender.com/create-payment-intent', {
             method: "POST",
             headers: {
-                'content-type': 'application/json'
+                'content-type': "application/json"
             },
             body: JSON.stringify({ price })
         })

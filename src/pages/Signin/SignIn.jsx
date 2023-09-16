@@ -76,7 +76,8 @@ const SignIn = () => {
                 fetch('https://speedy-wheel-server.onrender.com/users', {
                     method: "POST",
                     headers: {
-                        'content-type': "application/json"
+                        'content-type': "application/json",
+                        "authorization" : `Bearer ${localStorage.getItem("access-token")}`
                     },
                     body: JSON.stringify(savedUser)
                 })
