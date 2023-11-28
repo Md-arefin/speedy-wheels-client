@@ -69,7 +69,7 @@ const Navbar = () => {
 
     return (
        
-        <div className={`${isScrolled ? ' bg-black sticky top-0 w-full text-white' : 'bg-transparent -top-24'}  navbar transition duration-300 ease-in-out z-10`} style={{transition: 'all 0.3 ease'}}>
+        <div className={`${isScrolled ? ' bg-teal-700 sticky top-0 w-full text-white' : 'bg-transparent -top-24'}  navbar transition duration-300 ease-in-out z-10`} style={{transition: 'all 0.3 ease'}}>
             <div className="navbar-start relative w-full">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
