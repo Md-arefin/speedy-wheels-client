@@ -7,6 +7,7 @@ const CarLIsting = () => {
     const [filteredCarsData, setFilteredCarsData] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
     const [loading, setLoading] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
         setLoading(true);
@@ -26,12 +27,11 @@ const CarLIsting = () => {
             car.model.toLowerCase().includes(searchQuery.toLowerCase())
         );
         setFilteredCarsData(filteredCars);
+        setCurrentPage(1);
     };
 
     const modelData = cars.map((car) => car.model);
     const uniqueModelData = ["All", ...new Set(modelData)];
-
-    console.log(["uniqueModelData"], uniqueModelData);
 
     const handleModelFilter = (model) => {
         if (model === "All") {
@@ -40,7 +40,18 @@ const CarLIsting = () => {
             const filteredCars = cars.filter((car) => car.model === model);
             setFilteredCarsData(filteredCars);
         }
+        setCurrentPage(1);
     }
+
+    const carsPerPage = 6;
+    const totalPages = Math.ceil(filteredCarsData.length / carsPerPage);
+    const startIndex = (currentPage - 1) * carsPerPage;
+    const endIndex = startIndex + carsPerPage;
+    const currentProducts = filteredCarsData.slice(startIndex, endIndex);
+
+    const handlePageChange = (page) => {
+        setCurrentPage(page);
+    };
 
     return (
         <div className='mx-auto px-4 sm:px-6 lg:px-8'>
@@ -77,19 +88,10 @@ const CarLIsting = () => {
                     {
                         uniqueModelData.map((data, i) => <p key={i} className='normal-case border-2 rounded-lg font-serif cursor-pointer p-2 text-md my-2' onClick={() => handleModelFilter(data)}>{data}</p>)
                     }
-                    <div className='my-5'>
-                        <details className="dropdown">
-                            <summary className="m-1 btn font-serif">Sort with Prices</summary>
-                            <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
-                                <li className='normal-case text-lg btn my-1'>High to Low</li>
-                                <li className='normal-case text-lg btn my-1'>Low to High</li>
-                            </ul>
-                        </details>
-                    </div>
                 </div>
                 <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 items-center justify-center my-16`}>
                     {
-                        filteredCarsData.map(car => <div
+                        currentProducts.map(car => <div
                             key={car._id}
                             className="card h-[540px] bg-base-100 shadow-xl p-2 ">
                             <figure>
@@ -106,7 +108,15 @@ const CarLIsting = () => {
 
                 </div>
             </div>
-
+            <div className="flex justify-center gap-4 my-10">
+                {Array.from({ length: totalPages }).map((_, index) => (
+                    <div
+                        key={index}
+                        onClick={() => handlePageChange(index + 1)} >
+                        <p className='cursor-pointer font-serif border-2 border-transparent rounded-lg p-1 px-2 bg-sky-200 shadow-xl'>{index + 1}</p>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };
