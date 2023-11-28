@@ -16,8 +16,8 @@ const CheckoutForm = ({ price, id }) => {
     const [bookedCar, setBookedCar] = useState([]);
 
     useEffect(() => {
-
-        fetch('https://speedy-wheel-server.onrender.com/create-payment-intent', {
+        
+        fetch(`${import.meta.env.VITE_WEBSITE_URL}/create-payment-intent`, {
             method: "POST",
             headers: {
                 'content-type': "application/json"
@@ -30,7 +30,7 @@ const CheckoutForm = ({ price, id }) => {
     }, [])
 
     useEffect(() => {
-        fetch(`https://speedy-wheel-server.onrender.com/car-booked/${id}`)
+        fetch(`${import.meta.env.VITE_WEBSITE_URL}/car-booked/${id}`)
             .then(res => res.json())
             .then(data => {
                 setBookedCar(data)
@@ -127,7 +127,8 @@ const CheckoutForm = ({ price, id }) => {
                 numberOfDays,
                 status: "Paid",
             }
-            fetch('https://speedy-wheel-server.onrender.com/payments' ,{
+
+            fetch(`${import.meta.env.VITE_WEBSITE_URL}/payments` ,{
                 method: "POST",
                 headers: {
                     "content-type": 'application/json'

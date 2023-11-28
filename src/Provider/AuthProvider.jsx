@@ -43,7 +43,7 @@ const AuthProvider = ({ children }) => {
             setUser(loggedUser);
             
             if(loggedUser?.email){
-                fetch('https://speedy-wheel-server.onrender.com/jwt', {
+                fetch(`${import.meta.env.VITE_WEBSITE_URL}/jwt`, {
                     method: "POST",
                     headers: {
                         'content-type' : "application/json",

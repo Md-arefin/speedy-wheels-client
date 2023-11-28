@@ -33,7 +33,7 @@ const SignIn = () => {
                             email: data.email
                         }
 
-                        fetch('https://speedy-wheel-server.onrender.com/users', {
+                        fetch(`${import.meta.env.VITE_WEBSITE_URL}/users`, {
                             method: "POST",
                             headers: {
                                 'content-type': "application/json"
@@ -73,7 +73,7 @@ const SignIn = () => {
                     email: loggedUser.email
                 }
 
-                fetch('https://speedy-wheel-server.onrender.com/users', {
+                fetch(`${import.meta.env.VITE_WEBSITE_URL}/users`, {
                     method: "POST",
                     headers: {
                         'content-type': "application/json",
