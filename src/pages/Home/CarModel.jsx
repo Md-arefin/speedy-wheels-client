@@ -25,18 +25,16 @@ const CarModel = () => {
                 {
                     cars.map(car =><div 
                     key={car._id}
-                    className="card card-compact w-full h-[523px] bg-base-100 shadow-xl p-2 ">
+                    className="card card-compact w-full h-[540px] bg-base-100 shadow-xl p-2 ">
                     <figure>
-                        <img src={car.picture} alt={car.model} />
+                        <img src={car.picture} alt={car.model} className="w-full h-[400px]" />
                         </figure>
                     <div className="card-body">
-                        <h2 className="card-title">{car.model}</h2>
-                        <p><span className='font-bold text-lg'>Rent:</span> <span className='font-bold text-xl'>${car.rent}</span> /per day</p>
-                        <p><span className='font-bold text-lg'>Transmission:</span> {car.transmission}</p>
-                        <p><span className='font-bold text-lg'>Fuel:</span> {car.fuel}</p>
-                        <p><span className='font-bold text-lg'>Year:</span> {car.year}</p>
-                        <p><span className='font-bold text-lg'>Doors:</span> {car.doors}</p>
-                        
+                        <h2 className="card-title mx-auto font-serif ">{car.model}</h2>
+                    <div className='flex justify-between items-center gap-5 px-5'>
+                    <button className='btn bg-slate-500 text-white hover:text-black w-1/2 font-serif'>Rent</button>
+                    <button className='btn bg-black text-white hover:text-black w-1/2 font-serif'>View Details</button>
+                    </div>
                     </div>
                 </div>)
                 }

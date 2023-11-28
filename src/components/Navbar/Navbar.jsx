@@ -9,24 +9,28 @@ const Navbar = () => {
 
     const navItems =
         <>
-            <li className='text-lg font-bold hover:bg-rose-800  rounded'>
-                <Link className='hover:text-white'>Home</Link>
+            <li className='text-lg font-bold hover:bg-rose-800 font-serif rounded'>
+                <Link to="/" className='hover:text-white'>Home</Link>
             </li>
 
-            <li className='text-lg font-bold hover:bg-rose-800  rounded'>
+            <li className='text-lg font-bold hover:bg-rose-800 font-serif rounded'>
+                <Link to="CarLists" className='hover:text-white'>CarLists</Link>
+            </li>
+
+            <li className='text-lg font-bold hover:bg-rose-800 font-serif rounded'>
                 <Link to="our-team" className='hover:text-white'>Our Teams</Link>
             </li>
 
-            <li className='text-lg font-bold hover:bg-rose-800  rounded'>
+            <li className='text-lg font-bold hover:bg-rose-800 font-serif rounded'>
                 <Link to="about" className='hover:text-white'>About</Link>
             </li>
 
-            <li className='text-lg font-bold hover:bg-rose-800 rounded'>
+            <li className='text-lg font-bold hover:bg-rose-800 font-serif rounded'>
                 <Link to="contact" className='hover:text-white'>Contact</Link>
             </li>
 
             {
-                user ? <li className='text-lg font-bold hover:bg-rose-800 rounded'>
+                user ? <li className='text-lg font-bold hover:bg-rose-800 font-serif rounded'>
                     <Link to="dashboard/saved-car" className='hover:text-white'>Dashboard</Link>
                 </li> : ''
             }

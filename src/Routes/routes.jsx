@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Dashboard from "../Layouts/Dashboard";
 import Main from "../Layouts/Main";
 import About from "../pages/About/About";
+import CarLIsting from "../pages/CarLIsting/CarLIsting";
 import Contact from "../pages/Contact/Contact";
 import CarBooked from "../pages/Dashboard/CarBooked/CarBooked";
 import CarSaved from "../pages/Dashboard/CarSaved/CarSaved";
@@ -26,6 +27,10 @@ export const router = createBrowserRouter([
       {
         path: 'contact',
         element: <Contact />
+      },
+      {
+        path: 'CarLists',
+        element: <CarLIsting />
       },
       {
         path: 'about',
