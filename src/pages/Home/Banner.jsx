@@ -10,8 +10,8 @@ const Banner = () => {
         <div>
             <section className='relative'>
                 <div >
-                    <img src={bg} className='w-full lg:w-[45%]
-                    opacity-50 absolute lg:right-[40px]' alt="" />
+                    <img src={bg} className='w-full lg:w-[45%] 2xl:w-[65%]
+                    opacity-50 absolute lg:right-[40px] 2xl:right-0' alt="" />
                 </div>
                 <div className="flex">
                     <div className='absolute lg:top-[80px] top-[320px]  lg:left-[100px] left-[15px]'>
@@ -31,7 +31,7 @@ const Banner = () => {
                         </div>
                     </div>
 
-                    <div className='absolute top-[35px] lg:left-[600px] lg:ml-10 lg:top-[62px] '>
+                    <div className='absolute top-[35px] lg:top-[62px] 2xl:top-[280px] lg:ml-10 lg:left-[700px] 2xl:left-[1000px] '>
                         <img src={red} alt="" />
                     </div>
                 </div>

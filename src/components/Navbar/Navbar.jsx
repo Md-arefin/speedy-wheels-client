@@ -65,8 +65,8 @@ const Navbar = () => {
 
     return (
        
-        <div className={`${isScrolled ? ' bg-slate-500 sticky top-0 w-full lg:w-full' : 'bg-transparent -top-24'} max-w-screen-2xl navbar transition duration-300 ease-in-out z-10`} style={{transition: 'all 0.3 ease'}}>
-            <div className="navbar-start relative">
+        <div className={`${isScrolled ? ' bg-black sticky top-0 w-full text-white' : 'bg-transparent -top-24'}  navbar transition duration-300 ease-in-out z-10`} style={{transition: 'all 0.3 ease'}}>
+            <div className="navbar-start relative w-full">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
@@ -79,7 +79,7 @@ const Navbar = () => {
                     <img className='w-[60%]  rounded' src={logo} alt="" />
                 </Link>
             </div>
-            <div className="navbar-center hidden lg:flex">
+            <div className="navbar-center 2xl:ml-72 2xl:w-1/2 hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
                     {navItems}
                 </ul>
