@@ -85,13 +85,14 @@ const CarLIsting = () => {
                         </p>
                     </div>
 
-                    <div className='flex gap-10 my-10'>
-                        <div className='w-1/5'>
+                    <div className='flex flex-col md:flex-row gap-10 my-10'>
+                        <div className='lg:w-1/5'>
+                            <h2 className='text-3xl font-bold font-serif text-center'>Filter</h2>
                             {
                                 uniqueModelData.map((data, i) => <p key={i} className='normal-case border-2 rounded-lg font-serif cursor-pointer p-2 text-md my-2' onClick={() => handleModelFilter(data)}>{data}</p>)
                             }
                         </div>
-                        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 items-center justify-center my-16`}>
+                        <div className={`grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-10 items-center justify-center my-16`}>
                             {
                                 currentProducts.map(car => <div
                                     key={car._id}

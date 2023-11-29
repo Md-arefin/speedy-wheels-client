@@ -71,7 +71,7 @@ const Navbar = () => {
        
         <div className={`${isScrolled ? ' bg-teal-700 sticky top-0 w-full text-white' : 'bg-transparent -top-24'}  navbar transition duration-300 ease-in-out z-10`} style={{transition: 'all 0.3 ease'}}>
             <div className="navbar-start relative w-full">
-                <div className="dropdown">
+                <div className="dropdown text-black">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>

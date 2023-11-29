@@ -11,10 +11,10 @@ import Marquee from "react-fast-marquee";
 
 const Home = () => {
     return (
-        <div className=''>
+        <div className='px-5'>
             <Banner />
             {/* TODO: Book car */}
-            <div className='mt-[800px]'>
+            <div className='mt-[800px] lg:mt-[500px] xl:mt-[600px] 2xl:mt-[800px]'>
                 <Marquee>
                     <p className='font-serif text-xl'>Drive the Experience, Rent the Journey. Unleash the Road Ahead with SpeedyWheel. Drive the Extraordinary with Our Exclusive Fleet</p>
                 </Marquee>

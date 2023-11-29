@@ -7,7 +7,7 @@ const OurTeam = () => {
             <h5 className='text-xl md:text-3xl lg:text-5xl font-bold text-center'>Meet Our Team</h5>
             <div className='mx-5'>
                 <Player
-                    className='md:w-[80%]'
+                    className='md:w-[80%] lg:w-[50%]'
                     autoplay
                     loop
                     src="https://lottie.host/2ebe61a2-94cf-4e16-8e92-712b7df06cf0/5NVqztZnBm.json"

@@ -21,7 +21,7 @@ const SingleCar = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        if(user && user?.email){
+        if (user && user?.email) {
 
             const form = event.target;
             const carsModel = model
@@ -75,10 +75,10 @@ const SingleCar = () => {
                 // send rental data to DB
                 await fetch(`${import.meta.env.VITE_WEBSITE_URL}/cart-rent`, {
                     method: "POST",
-                       headers: {
-                            'content-type': "application/json",
-                            "authorization" : `Bearer ${localStorage.getItem("access-token")}`
-                        },
+                    headers: {
+                        'content-type': "application/json",
+                        "authorization": `Bearer ${localStorage.getItem("access-token")}`
+                    },
                     body: JSON.stringify(formData)
                 }).then(res => res.json())
                     .then(data => {
@@ -95,7 +95,7 @@ const SingleCar = () => {
             } catch (error) {
                 console.error('Error booking car:', error);
             }
-        } 
+        }
         else {
             Swal.fire({
                 title: 'Please login to save your ride',
@@ -106,7 +106,7 @@ const SingleCar = () => {
                 confirmButtonText: 'Login Now!'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    navigate('/login',  {state: {from: location}})
+                    navigate('/login', { state: { from: location } })
                 }
             })
         }
@@ -117,7 +117,7 @@ const SingleCar = () => {
         <div className='mb-20'>
             <div className="mx-auto w-96 p-2 ">
                 <figure>
-                    <img src={picture} alt={model} className="w-full " />
+                    <img src={picture} alt={model} className="w-96 " />
                 </figure>
                 <div className="card-body">
                     <h2 className="card-title mx-auto font-serif ">{model}</h2>
@@ -128,80 +128,77 @@ const SingleCar = () => {
                     <p className='text-xl'><span className='font-serif '>Year: </span>{year}</p>
                 </div>
             </div>
-            <div>
-                <div >
-                    <div className='text-center'>
-                        <h1 className='text-3xl font-bold '>Book Your Dream car</h1>
+
+            <div >
+                <div className='text-center'>
+                    <h1 className='text-3xl font-bold '>Book Your Dream car</h1>
+                </div>
+
+                <form onSubmit={handleSubmit} className='ml-5 lg:ml-36 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mt-20'>
+
+                    <div>
+                        <div>
+                            <h1 className='flex gap-5 font-bold text-xl mb-2'><BsFillCarFrontFill className='text-3xl text-red-700' /> Selected car for your ride</h1>
+
+                            <p className=" font-serif mb-20 lg:ml-12">{model}</p>
+                        </div>
+                        <div>
+                            <h1 className='flex gap-5 font-bold text-xl mb-5'><MdCalendarMonth className='text-3xl text-red-700' /> Pick-up Date</h1>
+                            <DatePicker className='border-2 rounded mt-2 mb-20 ml-10 p-2 md:ml-12'
+                                selected={startDate}
+                                dateFormat="dd/MM/yyyy"
+                                placeholderText="pick-up date!"
+                                onChange={(date) => setStartDate(date)} />
+                        </div>
                     </div>
 
-                    {/* Form for cars booking */}
-
-                    <form onSubmit={handleSubmit} className='lg:ml-36 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-20'>
-
+                    <div>
                         <div>
-                            <div>
-                                <h1 className='flex gap-5 font-bold text-xl mb-2'><BsFillCarFrontFill className='text-3xl text-red-700' /> Selected car for your ride</h1>
+                            <h1 className='flex gap-5 font-bold text-xl'>
+                                <MdEditLocationAlt className='text-3xl text-red-700' /> Pick-up Location</h1>
 
-                               <p className=" font-serif mb-20 lg:ml-12">{model}</p>
-                            </div>
-                            <div>
-                                <h1 className='flex gap-5 font-bold text-xl mb-5'><MdCalendarMonth className='text-3xl text-red-700' /> Pick-up Date</h1>
-                                <DatePicker className='border-2 rounded mb-20 ml-10 p-2 md:ml-12'
-                                    selected={startDate}
-                                    dateFormat="dd/MM/yyyy"
-                                    placeholderText="pick-up date!"
-                                    onChange={(date) => setStartDate(date)} />
-                            </div>
+                            <select className="dropdown ml-10 mt-2 mb-20 border-2 w-60 rounded-md px-4 py-2" name="pickUpLocation" id="" required>
+                                <option value="" className='font-serif'>Choose pick up Location</option>
+                                <option value="London">London</option>
+                                <option value="Tokyo">Tokyo</option>
+                                <option value="Sydney">Sydney</option>
+                                <option value="New York City">New York City</option>
+                                <option value="Paris">Paris</option>
+                                <option value="Denmark">Denmark</option>
+                            </select>
                         </div>
-                        {/* 2 */}
                         <div>
-                            <div>
-                                <h1 className='flex gap-5 font-bold text-xl'>
-                                    <MdEditLocationAlt className='text-3xl text-red-700' /> Pick-up Location</h1>
-
-                                <select className="dropdown ml-10 mt-2 mb-20 border-2 w-60 rounded-md px-4 py-2" name="pickUpLocation" id="" required>
-                                    <option value="" className='font-serif'>Choose pick up Location</option>
-                                    <option value="London">London</option>
-                                    <option value="Tokyo">Tokyo</option>
-                                    <option value="Sydney">Sydney</option>
-                                    <option value="New York City">New York City</option>
-                                    <option value="Paris">Paris</option>
-                                    <option value="Denmark">Denmark</option>
-                                </select>
-                            </div>
-                            <div>
-                                <h1 className='flex gap-5 font-bold text-xl mb-5'><MdOutlineCalendarMonth className='text-3xl text-red-700' /> Drop-of Date</h1>
-                                <DatePicker
-                                    className='border-2 rounded mb-20 ml-10 p-2 md:ml-12'
-                                    selected={endDate}
-                                    dateFormat="dd/MM/yyyy"
-                                    placeholderText="drop-of date!"
-                                    onChange={(date) => setEndDate(date)} />
-                            </div>
+                            <h1 className='flex gap-5 font-bold text-xl mb-5'><MdOutlineCalendarMonth className='text-3xl text-red-700' /> Drop-of Date</h1>
+                            <DatePicker
+                                className='border-2 rounded mb-20 ml-10 p-2 md:ml-12'
+                                selected={endDate}
+                                dateFormat="dd/MM/yyyy"
+                                placeholderText="drop-of date!"
+                                onChange={(date) => setEndDate(date)} />
                         </div>
-                        {/* 3 */}
+                    </div>
+
+                    <div>
                         <div>
-                            <div>
-                                <h1 className='flex gap-5 font-bold text-xl'><MdEditLocationAlt className='text-3xl text-red-700' /> Drop-of Location</h1>
+                            <h1 className='flex gap-5 font-bold text-xl'><MdEditLocationAlt className='text-3xl text-red-700' /> Drop-of Location</h1>
 
-                                <select className="dropdown ml-10 mt-2 mb-20 border-2 rounded-md px-4 w-60 py-2" name="dropOfLocation" id="" required>
-                                    <option value="">Choose Drop of Location</option>
-                                    <option value="Dhaka">Dhaka</option>
-                                    <option value="Mumbai">Mumbai</option>
-                                    <option value="Berlin">Berlin</option>
-                                    <option value="Dubai">Dubai</option>
-                                    <option value="Rio-de-Janeiro">Rio de Janeiro</option>
-                                    <option value="Denmark">Denmark</option>
-                                </select>
-                            </div>
-                            <label className='flex btn ml-6 lg:w-[260px] text-lg md:ml-[48px] md:mt-10 bg-rose-900 text-white hover:text-black w-[280px]'>
-                                <BsFillCartCheckFill />
-                                <input type='submit' value='Book now' />
-                            </label>
-
+                            <select className="dropdown ml-10 mt-2 mb-20 border-2 rounded-md px-4 w-60 py-2" name="dropOfLocation" id="" required>
+                                <option value="">Choose Drop of Location</option>
+                                <option value="Dhaka">Dhaka</option>
+                                <option value="Mumbai">Mumbai</option>
+                                <option value="Berlin">Berlin</option>
+                                <option value="Dubai">Dubai</option>
+                                <option value="Rio-de-Janeiro">Rio de Janeiro</option>
+                                <option value="Denmark">Denmark</option>
+                            </select>
                         </div>
-                    </form>
-                </div>
+                        <label className='flex btn ml-6 lg:w-[580px] text-lg md:ml-[48px] md:mt-10 bg-rose-900 text-white hover:text-black w-[280px] md:w-[580px] xl:w-[280px]'>
+                            <BsFillCartCheckFill />
+                            <input type='submit' value='Book now' />
+                        </label>
+
+                    </div>
+                </form>
             </div>
         </div>
     );

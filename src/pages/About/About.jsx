@@ -8,7 +8,7 @@ const About = () => {
             <h1 className='text-xl md:text-5xl lg:text-5xl text-center font-bold'>About us</h1>
             <div className='mx-5'>
                 <Player
-                    className='md:w-[80%]'
+                    className='md:w-[80%] lg:w-[50%]'
                     autoplay
                     loop
                     src="https://lottie.host/17be4b0d-debf-454c-a2c6-dd3b44e73b30/cJGXu8tTax.json"
