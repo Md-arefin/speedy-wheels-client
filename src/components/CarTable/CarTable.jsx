@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const CarTable = ({ car, i, handleDelete }) => {
 
-    const { carImage, _id, carsModel, pickUpLocation, pickUpDate, dropOfLocation, dropOfDate, numberOfDays, carRent, totalRent } = car;
+    const { carImage, _id, carsModel, pickUpLocation, pickUpDate, dropOfLocation, dropOfDate, numberOfDays, carRent, totalRent, carId } = car;
 
 
     return (
@@ -45,7 +45,7 @@ const CarTable = ({ car, i, handleDelete }) => {
                 <td className='text-right font-bold'>${carRent}</td>
                 <td className='text-right font-bold'>${totalRent}</td>
                 <td>
-                    <Link to={`/dashboard/payment?totalRent=${totalRent}&_id=${_id}`} >
+                    <Link to={`/dashboard/payment?totalRent=${totalRent}&_id=${_id}&carId=${carId}`} >
                         <button className='btn bg-rose-800  text-white hover:text-black'>Pay</button>
                     </Link>
                 </td>

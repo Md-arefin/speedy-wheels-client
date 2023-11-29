@@ -1,23 +1,47 @@
 import { useLoaderData } from 'react-router-dom';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { BsFillCarFrontFill, BsFillCartCheckFill } from 'react-icons/bs';
 import { MdEditLocationAlt } from 'react-icons/md';
 import { MdOutlineCalendarMonth, MdCalendarMonth } from 'react-icons/md';
+import { FaDollarSign } from "react-icons/fa";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
+
+
 const SingleCar = () => {
+
     const carDetail = useLoaderData();
-
-    const { picture, model, rent, doors, fuel, transmission, year } = carDetail;
-
     const { user } = useContext(AuthContext);
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
     const navigate = useNavigate();
     const location = useLocation();
+    const [RentTotal, setRentTotal] = useState(0);
+    const [DropOffDate, setDropOffDate] = useState(new Date());
+    const [pickUpDate, setPickUpDate] = useState(new Date());
+
+
+    const { picture, model, rent, doors, fuel, transmission, year,_id, booked } = carDetail;
+
+    // Calculate the number of milliseconds between the two dates
+    const timeDifference = DropOffDate - pickUpDate;
+    // Calculate the number of days between the two dates
+    const numberOfDays = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+
+    // console.log(timeDifference, 'days', numberOfDays)
+
+    // console.log( pickUpDate, ',', DropOffDate)
+
+    useEffect(() => {
+        const total = parseFloat((rent * numberOfDays).toFixed(2));
+        setRentTotal(total)
+    }, [numberOfDays, setEndDate, setStartDate])
+
+    console.log(carDetail);
+
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -28,28 +52,16 @@ const SingleCar = () => {
             const pickUpLocation = form.pickUpLocation.value;
             const dropOfLocation = form.dropOfLocation.value;
             const pickUpDate = startDate;
-            const dropOfDate = endDate;
+            const DropOffDate = endDate;
 
-            // Calculate the number of milliseconds between the two dates
-            const timeDifference = dropOfDate - pickUpDate;
-            // Calculate the number of days between the two dates
-            const numberOfDays = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
 
-            // console.log(timeDifference, 'days', numberOfDays)
-
-            // console.log( pickUpDate, ',', dropOfDate)
             try {
-
                 const carImage = picture;
                 const carRent = rent;
                 const carFuel = fuel;
                 const carDoor = doors;
                 const carYear = year;
                 const carTransmission = transmission;
-
-                const totalRent = parseFloat((carRent * numberOfDays).toFixed(2));
-
-                console.log(totalRent)
 
                 // Combine form data with car details
 
@@ -58,16 +70,17 @@ const SingleCar = () => {
                     pickUpLocation,
                     dropOfLocation,
                     pickUpDate,
-                    dropOfDate,
+                    DropOffDate,
                     carDoor,
                     carFuel,
                     carRent,
                     carImage,
-                    totalRent,
+                    totalRent: RentTotal,
                     carTransmission,
                     carYear,
                     email: user?.email,
-                    numberOfDays
+                    numberOfDays,
+                    carId: _id
                 };
 
                 console.log(formData)
@@ -148,10 +161,9 @@ const SingleCar = () => {
                                 selected={startDate}
                                 dateFormat="dd/MM/yyyy"
                                 placeholderText="pick-up date!"
-                                onChange={(date) => setStartDate(date)} />
+                                onChange={(date) => { setStartDate(date), setPickUpDate(date) }} />
                         </div>
                     </div>
-
                     <div>
                         <div>
                             <h1 className='flex gap-5 font-bold text-xl'>
@@ -174,7 +186,7 @@ const SingleCar = () => {
                                 selected={endDate}
                                 dateFormat="dd/MM/yyyy"
                                 placeholderText="drop-of date!"
-                                onChange={(date) => setEndDate(date)} />
+                                onChange={(date) => { setEndDate(date), setDropOffDate(date) }} />
                         </div>
                     </div>
 
@@ -192,10 +204,23 @@ const SingleCar = () => {
                                 <option value="Denmark">Denmark</option>
                             </select>
                         </div>
-                        <label className='flex btn ml-6 lg:w-[580px] text-lg md:ml-[48px] md:mt-10 bg-rose-900 text-white hover:text-black w-[280px] md:w-[580px] xl:w-[280px]'>
-                            <BsFillCartCheckFill />
-                            <input type='submit' value='Book now' />
-                        </label>
+
+                        <div>
+                            <h1 className='flex gap-5 font-bold text-xl'><FaDollarSign className='text-3xl text-red-700' /> Total Cost</h1>
+                            <p className='text-2xl ml-10 mt-2 mb-20 border-2 rounded-md px-4 w-60 py-2'> ${RentTotal}</p>
+                        </div>
+                    </div>
+
+                    <div className='flex flex-col xl:flex-row xl:gap-40 mt-0'>
+                        <div className='mb-20'>
+                            <h1 className='flex gap-5 font-bold text-xl'><MdEditLocationAlt className='text-3xl text-red-700' /> Total Days</h1>
+                            <p className='text-2xl ml-10 mt-2 border-2 rounded-md px-4 w-60 py-2'> {numberOfDays} days</p>
+                        </div>
+
+                        {
+                            booked ?  <button className='flex btn text-lg md:ml-[48px] md:mt-9 bg-rose-900 text-white hover:text-black w-[280px]' type='submit' value='Book now' disabled>Car is booked <BsFillCartCheckFill /></button> :  <button className='flex btn text-lg md:ml-[48px] md:mt-9 bg-rose-900 text-white hover:text-black w-[280px]' type='submit' value='Book now' disabled={RentTotal === 0 || RentTotal < 0}>Book now <BsFillCartCheckFill /></button>
+                        }
+                       
 
                     </div>
                 </form>

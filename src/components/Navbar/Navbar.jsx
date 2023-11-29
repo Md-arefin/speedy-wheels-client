@@ -31,7 +31,7 @@ const Navbar = () => {
 
             {
                 user ? <li className='text-lg font-bold hover:bg-rose-800 font-serif rounded'>
-                    <Link to="dashboard/saved-car" className='hover:text-white'>Dashboard</Link>
+                    <Link to="dashboard/saved-car" className='hover:text-white'>Cart</Link>
                 </li> : ''
             }
         </>

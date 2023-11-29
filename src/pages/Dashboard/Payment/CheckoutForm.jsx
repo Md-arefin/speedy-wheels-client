@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 import { AuthContext } from '../../../Provider/AuthProvider';
 import './payment.css'
 
-const CheckoutForm = ({ price, id }) => {
+const CheckoutForm = ({ price, id, carId }) => {
 
     const { user } = useContext(AuthContext);
     const stripe = useStripe();
@@ -53,6 +53,7 @@ const CheckoutForm = ({ price, id }) => {
     const carYear = bookedCar[0]?.carYear;
 
     console.log(clientSecret);
+    console.log('{[carId]}', carId);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -138,12 +139,23 @@ const CheckoutForm = ({ price, id }) => {
             .then(res => res.json())
             .then(data => {
                 if(data.insertedId){
-                    Swal.fire({
-                        position: 'center',
-                        icon: 'success',
-                        title: 'Payment successful',
-                        showConfirmButton: false,
-                        timer: 1500
+                    fetch(`${import.meta.env.VITE_WEBSITE_URL}/carRented/${carId}`,{
+                        method: "PATCH",
+                        headers: {
+                            "content-type": "application/json",
+                        },
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.matchedCount === 1) {
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'success',
+                                title: 'Payment successful',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                        }
                     })
                 }
             })

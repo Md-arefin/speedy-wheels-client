@@ -13,6 +13,7 @@ const Payment = () => {
     const searchParams = new URLSearchParams(location.search);
     const totalRent = searchParams.get('totalRent');
     const _id = searchParams.get('_id');
+    const carId = searchParams.get('carId');
 
     return (
         <div>
@@ -28,7 +29,7 @@ const Payment = () => {
             </div>
             <h1 className='text-center text-3xl mt-10 font-bold'>Secure Payment - Complete Your Booking</h1>
             <Elements stripe={stripePromise}>
-                <CheckoutForm price={totalRent} id={_id}></CheckoutForm>
+                <CheckoutForm price={totalRent} id={_id} carId={carId}></CheckoutForm>
             </Elements>
         </div>
     );
