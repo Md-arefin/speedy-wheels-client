@@ -12,6 +12,7 @@ import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import OurTeam from "../pages/OurTeam/OurTeam";
 import SignIn from "../pages/Signin/SignIn";
+import SingleCar from "../pages/singleCar/SingleCar";
 import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
@@ -31,6 +32,11 @@ export const router = createBrowserRouter([
       {
         path: 'CarLists',
         element: <CarLIsting />
+      },
+      {
+        path: 'car-details/:id',
+        element: <SingleCar />,
+        loader: ({ params }) => fetch(`${import.meta.env.VITE_WEBSITE_URL}/cars/${params.id}`)
       },
       {
         path: 'about',

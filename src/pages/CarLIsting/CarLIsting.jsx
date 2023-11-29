@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FaSearch } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 const CarLIsting = () => {
 
@@ -19,6 +20,8 @@ const CarLIsting = () => {
                 setLoading(false);
             })
     }, []);
+
+    console.log(filteredCarsData);
 
     const handleSearch = (e) => {
         e.preventDefault();
@@ -55,68 +58,73 @@ const CarLIsting = () => {
 
     return (
         <div className='mx-auto px-4 sm:px-6 lg:px-8'>
-            <div>
-                <form className='my-10 px-5' onSubmit={handleSearch}>
-
-                    <div className="flex gap-2 justify-center my-2">
-
-                        <input
-                            className="w-8/12 px-4 rounded-2xl border border-gray-300 p-2"
-                            type="text"
-                            placeholder='Search for your ride'
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                            required
-                        />
-                        <button type='submit' className='btn normal-case'> Search <FaSearch /></button>
-                    </div>
-                </form>
-            </div>
-            {/* heading title */}
-            <div className='space-y-5'>
-                <h2 className='text-5xl font-bold text-center font-serif'>Our Rental Fleet</h2>
-                <p>
-                    Unleash the thrill of the open road with our exceptional SpeedyWheel collection, where performance meets passion. Our vast inventory boasts over 200 cars, each meticulously curated to elevate your driving experience. Picture yourself behind the wheel of pure exhilaration, as our SpeedyWheel vehicles deliver a symphony of power, precision, and style. Whether you crave the adrenaline rush of a sports car or the refined elegance of a luxury sedan, our diverse selection ensures there's a perfect match for every discerning driver. Don't settle for ordinary when you can command the extraordinary with SpeedyWheel. Explore our extensive lineup and elevate your driving dreams to new heights.
-                </p>
-            </div>
-
             {
-                loading ? <div className='text-5xl font-bold text-center font-serif animate-spin'>Loading...</div> : <div></div>
-            }
-            <div className='flex gap-10 my-10'>
-                <div className='w-1/5'>
-                    {
-                        uniqueModelData.map((data, i) => <p key={i} className='normal-case border-2 rounded-lg font-serif cursor-pointer p-2 text-md my-2' onClick={() => handleModelFilter(data)}>{data}</p>)
-                    }
-                </div>
-                <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 items-center justify-center my-16`}>
-                    {
-                        currentProducts.map(car => <div
-                            key={car._id}
-                            className="card h-[540px] bg-base-100 shadow-xl p-2 ">
-                            <figure>
-                                <img src={car.picture} alt={car.model} className="w-full h-[400px]" />
-                            </figure>
-                            <div className="card-body">
-                                <h2 className="card-title mx-auto font-serif ">{car.model}</h2>
-                                <p className='text-xl'><span className='font-serif '>Rent per day: </span>${car.rent}</p>
-                                <button className='btn bg-cyan-600 text-white hover:text-black w-2/3 font-serif mx-auto'>View Details</button>
+                loading ? <span className="loading loading-spinner loading-lg mx-[50%] "></span> : <>
+                    <div>
+                        <form className='my-10 px-5' onSubmit={handleSearch}>
 
+                            <div className="flex gap-2 justify-center my-2">
+
+                                <input
+                                    className="w-8/12 px-4 rounded-2xl border border-gray-300 p-2"
+                                    type="text"
+                                    placeholder='Search for your ride'
+                                    value={searchQuery}
+                                    onChange={(e) => setSearchQuery(e.target.value)}
+                                    required
+                                />
+                                <button type='submit' className='btn normal-case'> Search <FaSearch /></button>
                             </div>
-                        </div>)
-                    }
-
-                </div>
-            </div>
-            <div className="flex justify-center gap-4 my-10">
-                {Array.from({ length: totalPages }).map((_, index) => (
-                    <div
-                        key={index}
-                        onClick={() => handlePageChange(index + 1)} >
-                        <p className='cursor-pointer font-serif border-2 border-transparent rounded-lg p-1 px-2 bg-sky-200 shadow-xl'>{index + 1}</p>
+                        </form>
                     </div>
-                ))}
-            </div>
+                    {/* heading title */}
+                    <div className='space-y-5'>
+                        <h2 className='text-5xl font-bold text-center font-serif'>Our Rental Fleet</h2>
+                        <p>
+                            Unleash the thrill of the open road with our exceptional SpeedyWheel collection, where performance meets passion. Our vast inventory boasts over 200 cars, each meticulously curated to elevate your driving experience. Picture yourself behind the wheel of pure exhilaration, as our SpeedyWheel vehicles deliver a symphony of power, precision, and style. Whether you crave the adrenaline rush of a sports car or the refined elegance of a luxury sedan, our diverse selection ensures there's a perfect match for every discerning driver. Don't settle for ordinary when you can command the extraordinary with SpeedyWheel. Explore our extensive lineup and elevate your driving dreams to new heights.
+                        </p>
+                    </div>
+
+                    <div className='flex gap-10 my-10'>
+                        <div className='w-1/5'>
+                            {
+                                uniqueModelData.map((data, i) => <p key={i} className='normal-case border-2 rounded-lg font-serif cursor-pointer p-2 text-md my-2' onClick={() => handleModelFilter(data)}>{data}</p>)
+                            }
+                        </div>
+                        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 items-center justify-center my-16`}>
+                            {
+                                currentProducts.map(car => <div
+                                    key={car._id}
+                                    className="border- rounded-lg h-[580px] shadow-xl p-2 ">
+                                    <figure>
+                                        <img src={car.picture} alt={car.model} className="w-full h-[400px]" />
+                                    </figure>
+                                    <div className="card-body">
+                                        <h2 className="card-title mx-auto font-serif ">{car.model}</h2>
+                                        <p className='text-xl'><span className='font-serif '>Rent per day: </span>${car.rent}</p>
+
+                                        <Link to={`/car-details/${car._id}`}>
+                                            <button className='btn bg-cyan-600  text-white hover:text-black w-3/4 font-serif mx-16'>View Details</button>
+                                        </Link>
+                                    </div>
+                                </div>)
+                            }
+
+                        </div>
+                    </div>
+                    <div className="flex justify-center gap-4 my-10">
+                        {Array.from({ length: totalPages }).map((_, index) => (
+                            <div
+                                key={index}
+                                onClick={() => handlePageChange(index + 1)} >
+                                <p className='cursor-pointer font-serif border-2 border-transparent rounded-lg p-1 px-2 bg-sky-200 hover:bg-sky-400 shadow-xl'>{index + 1}</p>
+                            </div>
+                        ))}
+                    </div>
+
+                </>
+            }
+
         </div>
     );
 };

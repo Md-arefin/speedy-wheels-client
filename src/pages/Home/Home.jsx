@@ -15,7 +15,7 @@ const Home = () => {
             <Banner />
             {/* TODO: Book car */}
             <div className='my-24'>
-                <BookCar ></BookCar>
+                {/* <BookCar ></BookCar> */}
             </div>
             {/* Trip */}
             <div className='my-24'>
