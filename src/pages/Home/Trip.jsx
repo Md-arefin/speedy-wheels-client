@@ -5,7 +5,7 @@ import { FaCarSide } from 'react-icons/fa';
 
 const Trip = () => {
     return (
-        <div className='mt-[800px]'>
+        <div >
             <div className='text-center'>
                 <p className='text-xl my-3 font-bold'>Plan your trip now</p>
                 <h1 className='text-5xl font-bold'>Quick & easy car rental</h1>

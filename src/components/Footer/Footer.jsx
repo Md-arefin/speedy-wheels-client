@@ -52,7 +52,7 @@ const Footer = () => {
                     <a className="link link-hover">Privacy policy</a>
                     <a className="link link-hover">Cookie policy</a>
                 </div>
-                <div>
+                {/* <div>
                     <span className="footer-title">Newsletter</span>
                     <form onSubmit={handleNewsTeller} className="form-control w-80">
                         <label className="label">
@@ -67,7 +67,7 @@ const Footer = () => {
                             <button type='submit' className="btn bg-rose-900  absolute top-0 right-0 border-none text-white rounded-l-none">Subscribe</button>
                         </div>
                     </form>
-                </div>
+                </div> */}
             </footer>
             <div className="footer footer-center p-4 bg-base-300 text-base-content">
                 <div>

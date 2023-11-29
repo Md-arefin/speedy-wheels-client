@@ -1,12 +1,12 @@
 import React from 'react';
 import Banner from './Banner';
 import BestDeals from './BestDeals';
-import BookCar from './BookCar';
 import CarModel from './CarModel';
 import FAQ from './FAQ';
 import Parallax from './Parallax';
 import Testimonial from './Testimonial';
 import Trip from './Trip';
+import Marquee from "react-fast-marquee";
 
 
 const Home = () => {
@@ -14,8 +14,10 @@ const Home = () => {
         <div className=''>
             <Banner />
             {/* TODO: Book car */}
-            <div className='my-24'>
-                {/* <BookCar ></BookCar> */}
+            <div className='mt-[800px]'>
+                <Marquee>
+                    <p className='font-serif text-xl'>Drive the Experience, Rent the Journey. Unleash the Road Ahead with SpeedyWheel. Drive the Extraordinary with Our Exclusive Fleet</p>
+                </Marquee>
             </div>
             {/* Trip */}
             <div className='my-24'>
@@ -36,11 +38,11 @@ const Home = () => {
             </div>
             {/* Parallax */}
             <div className='my-24'>
-               <Parallax/>
+                <Parallax />
             </div>
             {/* testimonials */}
             <div className='my-24'>
-               <Testimonial></Testimonial>
+                <Testimonial></Testimonial>
             </div>
             {/* FAQ */}
             <FAQ></FAQ>
